@@ -8,7 +8,7 @@
  '(custom-safe-themes
    '("dde643b0efb339c0de5645a2bc2e8b4176976d5298065b8e6ca45bc4ddf188b7" "3199be8536de4a8300eaf9ce6d864a35aa802088c0925e944e2b74a574c68fd0" "a0415d8fc6aeec455376f0cbcc1bee5f8c408295d1c2b9a1336db6947b89dd98" default))
  '(package-selected-packages
-   '(all-the-icons-ivy-rich dired-hide-dotfiles all-the-icons-dired all-the-icons exwm dirtrack ivy slime avy markdown-mode flycheck-pkg-config undo-tree ivy-xref dumb-jump flycheck modern-cpp-font-lock auto-complete pdf-continuous-scroll-mode pdf-tools paredit parinfer-rust multiple-cursors cmake-mode which-key use-package spacemacs-theme solo-jazz-theme solarized-theme rainbow-delimiters projectile parinfer-rust-mode one-themes modus-themes ivy-rich helpful doom-themes doom-modeline counsel))
+   '(yasnippet treemacs-projectile treemacs clang-format+ company ue lsp-ivy lsp-ui lsp-mode all-the-icons-ivy-rich dired-hide-dotfiles all-the-icons-dired all-the-icons exwm dirtrack ivy slime avy markdown-mode flycheck-pkg-config undo-tree ivy-xref dumb-jump flycheck modern-cpp-font-lock auto-complete pdf-continuous-scroll-mode pdf-tools paredit parinfer-rust multiple-cursors cmake-mode which-key use-package spacemacs-theme solo-jazz-theme solarized-theme rainbow-delimiters projectile parinfer-rust-mode one-themes modus-themes ivy-rich helpful doom-themes doom-modeline counsel))
  '(undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo-tree-history/"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -32,7 +32,7 @@
   (setq frame-resize-pixelwise t)                              ; Adjust to window correctly
   (delete-selection-mode 1)                                    ; Follow the convention of modern editors
   (setq-default indent-tabs-mode nil)                          ; Prevents extraneous tabs
-  (set-face-attribute 'default nil :height 120)                ; Make font scale a bit larger
+  (set-face-attribute 'default nil :height 100)                ; Make font scale a bit larger
   (setq browse-url-browser-function 'eww-browse-url)           ; Set the the default url browser
   )
 
@@ -307,8 +307,74 @@
   :init (setq markdown-command "pandoc"))
 
 
-;; ----- Shell -----
-(global-set-key (kbd "C-c t") 'shell)
+;; ------ lsp ------
+(use-package lsp-mode
+  :init
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-keymap-prefix "C-c l")
+  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+         (c++-mode . lsp)
+         (c-mode . lsp)
+         ;; if you want which-key integration
+         (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp
+  :config
+  (setq lsp-clangd-binary-path "c:/clangd/bin/clangd.exe")
+  (setq lsp-diagnostic-package :none))
+
+
+;; ------ lsp-ui ------
+(use-package lsp-ui :commands lsp-ui-mode)
+
+
+;; ------ lsp-ivy ------
+(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+
+
+;; ------ ue ------
+(use-package ue
+  :hook   ((lsp-mode . ue-mode))
+  :config
+  (define-key ue-mode-map (kbd "C-c u") 'ue-command-map)
+
+  ;; Define a read-only directory class
+  (dir-locals-set-class-variables 'read-only '((nil . ((buffer-read-only . t)))))
+
+  ;; Associate directories with the read-only class
+  (dolist (dir (list "c:/Users/hecto/Documents/GitHub/UnrealEngine"))
+    (dir-locals-set-directory-class (file-truename dir) 'read-only)))
+
+
+;; ------ yasnippet ------
+(use-package yasnippet
+  :config (yas-reload-all)
+  :hook (ue-mode . yas-minor-mode)
+  :bind (:map yas-minor-mode-map
+              ("<tab>" . nil)
+              ("TAB" . nil)
+              ("<backtab>" . yas-expand)))
+
+
+;; ------ flycheck ------ Con Unreal Engine va regular
+;; (use-package flycheck
+;;   :hook (lsp . flycheck-mode))
+
+
+;; ------ company ------
+(use-package company
+  :hook (lsp . company)
+  :bind (:map company-active-map
+              ("<tab>" . company-complete-selection)))
+
+
+;; ------ treemacs ------
+(use-package treemacs
+  :bind (("C-c t t" . treemacs))
+  :config
+  (setq treemacs-width 50))
+
+(use-package treemacs-projectile
+  :after (treemacs projectile))
 
 
 ;; ----- UE4Editor -----

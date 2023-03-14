@@ -1,0 +1,75 @@
+language: cpp
+
+sudo: required
+git:
+  depth: 3
+
+branches:
+  only:
+    - master
+    - develop
+    - /^v[0-9]+\.[0-9]+$/
+
+jobs:
+  include:
+    - os: linux
+      compiler: g++
+      env: T=g++-linux COMPILER_VERSION=-7 CMAKE_BUILD_TYPE=Debug
+      script: ./scripts/travis.sh
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-7
+            - python3-pip
+            - libcppunit-dev
+    - os: linux
+      compiler: g++
+      env: T=g++-linux COMPILER_VERSION=-7 CMAKE_BUILD_TYPE=Release
+      script: ./scripts/travis.sh
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-7
+            - python3-pip
+            - libcppunit-dev
+    - os: osx
+      osx_image: xcode11
+      script: ./scripts/travis.sh
+      compiler: clang
+      env: T=clang-osx CMAKE_BUILD_TYPE=Debug
+      addons:
+        homebrew:
+          packages:
+            - llvm
+            - yarn
+            - cppunit
+          update: true
+    - os: osx
+      osx_image: xcode11
+      script: ./scripts/travis.sh
+      compiler: clang
+      env: T=clang-osx CMAKE_BUILD_TYPE=Release
+      addons:
+        homebrew:
+          packages:
+            - llvm
+            - yarn
+            - cppunit
+          update: true
+    - stage: Release
+      before_deploy: ./scripts/rtags-release.sh
+      script: true
+      deploy:
+        provider: releases
+        skip_cleanup: true
+        api_key:
+          secure: DOlyG6rhNwvBt+AfQPbOR6gjqvYQYU8rEiFB7cjOY+ghDMw8ijcd3akORusrFqhkCbDLxK2/J6VbNLZCErv/mAUOvt+FPm9DsSbrulKRAeS5l1YQoUfokAE5AFaRSHGlshilYrDvDjljpyRLyZJZheQjSTeUbZYJQEEJQpTQhOQ=
+        file:
+          - build/rtags-${TRAVIS_TAG#v*}.tar.bz2
+          - build/rtags-${TRAVIS_TAG#v*}.tar.gz
+        on:
+          tags: true

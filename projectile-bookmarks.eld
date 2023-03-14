@@ -1,1 +1,1 @@
-("~/.emacs.d/")
+("c:/Users/hecto/Documents/GitHub/UnrealEngine/" "c:/Users/hecto/Documents/Unreal Projects/ProceduralTest/" "~/.emacs.d/" "c:/Users/hecto/Downloads/llvm-project/")
