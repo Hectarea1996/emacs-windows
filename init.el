@@ -452,7 +452,8 @@
   (add-to-list 'company-backends '(company-capf :with company-yasnippet))
   (setq company-idle-delay 0)
   (setq company-selection-wrap-around t)
-  (setq company-minimum-prefix-length 2))
+  (setq company-minimum-prefix-length 2)
+  (setq company-transformers '(company-sort-prefer-same-case-prefix)))
 
 
 ;; ------ treemacs ------
