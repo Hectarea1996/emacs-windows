@@ -8,7 +8,7 @@
  '(custom-safe-themes
    '("dde643b0efb339c0de5645a2bc2e8b4176976d5298065b8e6ca45bc4ddf188b7" "3199be8536de4a8300eaf9ce6d864a35aa802088c0925e944e2b74a574c68fd0" "a0415d8fc6aeec455376f0cbcc1bee5f8c408295d1c2b9a1336db6947b89dd98" default))
  '(package-selected-packages
-   '(treemacs-projectile treemacs clang-format+ company ue lsp-ivy lsp-ui lsp-mode all-the-icons-ivy-rich dired-hide-dotfiles all-the-icons-dired all-the-icons exwm dirtrack ivy slime avy markdown-mode flycheck-pkg-config undo-tree ivy-xref dumb-jump flycheck modern-cpp-font-lock auto-complete pdf-continuous-scroll-mode pdf-tools paredit parinfer-rust multiple-cursors cmake-mode which-key use-package spacemacs-theme solo-jazz-theme solarized-theme rainbow-delimiters projectile parinfer-rust-mode one-themes modus-themes ivy-rich helpful doom-themes doom-modeline counsel))
+   '(vscode-dark-plus-theme flycheck-clang-tidy yasnippet treemacs-projectile treemacs clang-format+ company ue lsp-ivy lsp-ui lsp-mode all-the-icons-ivy-rich dired-hide-dotfiles all-the-icons-dired all-the-icons exwm dirtrack ivy slime avy markdown-mode flycheck-pkg-config undo-tree ivy-xref dumb-jump flycheck modern-cpp-font-lock auto-complete pdf-continuous-scroll-mode pdf-tools paredit parinfer-rust multiple-cursors cmake-mode which-key use-package spacemacs-theme solo-jazz-theme solarized-theme rainbow-delimiters projectile parinfer-rust-mode one-themes modus-themes ivy-rich helpful doom-themes doom-modeline counsel))
  '(undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo-tree-history/"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -31,7 +31,8 @@
   (add-to-list 'initial-frame-alist '(fullscreen . maximized)) ; Initialize emacs maximized
   (setq frame-resize-pixelwise t)                              ; Adjust to window correctly
   (delete-selection-mode 1)                                    ; Follow the convention of modern editors
-  (setq-default indent-tabs-mode nil)                          ; Prevents extraneous tabs
+  (setq-default indent-tabs-mode t)                            ; Prevents extraneous tabs
+  (setq-default tab-width 4)                                   ; Tabs width being 4 spaces long
   (set-face-attribute 'default nil :height 100)                ; Make font scale a bit larger
   (setq browse-url-browser-function 'eww-browse-url)           ; Set the the default url browser
   )
@@ -99,13 +100,18 @@
 
 
 ;; ----- Theme -----
-(use-package modus-themes
-  :init
-  (setq modus-themes-italic-constructs t
-        modus-themes-bold-constructs nil
-        modus-themes-region '(bg-only no-extend))
-  :bind ("<f5>" . modus-themes-toggle))
-(load-theme 'modus-vivendi)
+;; (use-package modus-themes
+;;   :init
+;;   (setq modus-themes-italic-constructs t
+;;         modus-themes-bold-constructs nil
+;;         modus-themes-region '(bg-only no-extend))
+;;   :bind ("<f5>" . modus-themes-toggle))
+;; (load-theme 'modus-vivendi)
+
+(use-package vscode-dark-plus-theme
+  :ensure t
+  :config
+  (load-theme 'vscode-dark-plus t))
 
 ;; ------- Doom modeline -------
 (use-package doom-modeline
@@ -307,6 +313,22 @@
   :init (setq markdown-command "pandoc"))
 
 
+;; ------ c-mode ------
+(require 'cc-mode)
+(setq-default c-indent-tabs-mode t     ; Pressing TAB should cause indentation
+              c-indent-level 4) ; DO NOT expand tabs when deleting
+;;(c-add-style "my-c-style" '((c-continued-statement-offset 4))) ; If a statement continues on the next line, indent the continuation by 4
+(defun my-c-mode-hook ()
+  (c-set-style "my-c-style")
+  (c-set-offset 'substatement-open '0) ; brackets should be at same indentation level as the statements they open
+  (c-set-offset 'inline-open '+)
+  (c-set-offset 'block-open '+)
+  (c-set-offset 'brace-list-open '+)   ; all "opens" should be indented by the c-indent-level
+  (c-set-offset 'case-label '+))       ; indent case labels by c-indent-level, too
+(add-hook 'c-mode-hook 'my-c-mode-hook)
+(add-hook 'c++-mode-hook 'my-c-mode-hook)
+
+
 ;; ------ lsp ------
 (use-package lsp-mode
   :init
@@ -333,19 +355,44 @@
 
 ;; ------ ue ------
 (use-package ue
-  :init   (ue-global-mode +1)
-  :config (define-key ue-mode-map (kbd "C-c u") 'ue-command-map))
+  :hook   ((lsp-mode . ue-mode))
+  :config
+  (define-key ue-mode-map (kbd "C-c u") 'ue-command-map)
+
+  ;; Define a read-only directory class
+  (dir-locals-set-class-variables 'read-only '((nil . ((buffer-read-only . t)))))
+
+  ;; Associate directories with the read-only class
+  (dolist (dir (list "c:/Users/hecto/Documents/GitHub/UnrealEngine"))
+    (dir-locals-set-directory-class (file-truename dir) 'read-only)))
 
 
 ;; ------ yasnippet ------
 (use-package yasnippet
   :config (yas-reload-all)
-  :hook (ue . yas-minor-mode))
+  :hook (ue-mode . yas-minor-mode)
+  :bind (:map yas-minor-mode-map
+              ("<tab>" . nil)
+              ("TAB" . nil)
+              ("<backtab>" . yas-expand)))
 
 
-;; ------ flycheck ------ Con Unreal Engine va regular
-;; (use-package flycheck
-;;   :hook (lsp . flycheck-mode))
+;; ------ clang-format ------
+(use-package clang-format
+  :config
+  (setq clang-format-style-option "llvm"))
+
+
+;; ------ flycheck ------
+(use-package flycheck
+  :hook (lsp-mode . flycheck-mode))
+
+
+;; ------ flycheck-clang-tidy ------
+(use-package flycheck-clang-tidy
+  :after flycheck
+  :hook
+  (flycheck-mode . flycheck-clang-tidy-setup))
 
 
 ;; ------ company ------
@@ -368,7 +415,8 @@
 ;; ----- UE4Editor -----
 ;; (defvar ue4-projects '())
 ;; (defvar ue4-editor nil)
-(defvar ue5-projects '(("ProceduralTest" "C:/Users/hecto/Documents/Unreal Projects/ProceduralTest")))
+(defvar ue5-projects '(("ProceduralTest" "C:/Users/hecto/Documents/Unreal Projects/ProceduralTest")
+                       ("LevelUpCpp" "C:/Users/hecto/Documents/Unreal Projects/LevelUpCpp")))
 (defvar ue5-editor "C:/Users/hecto/Documents/GitHub/UnrealEngine/Engine/Binaries/Win64/UnrealEditor.exe")
 
 

@@ -8,7 +8,7 @@
  '(custom-safe-themes
    '("dde643b0efb339c0de5645a2bc2e8b4176976d5298065b8e6ca45bc4ddf188b7" "3199be8536de4a8300eaf9ce6d864a35aa802088c0925e944e2b74a574c68fd0" "a0415d8fc6aeec455376f0cbcc1bee5f8c408295d1c2b9a1336db6947b89dd98" default))
  '(package-selected-packages
-   '(yasnippet treemacs-projectile treemacs clang-format+ company ue lsp-ivy lsp-ui lsp-mode all-the-icons-ivy-rich dired-hide-dotfiles all-the-icons-dired all-the-icons exwm dirtrack ivy slime avy markdown-mode flycheck-pkg-config undo-tree ivy-xref dumb-jump flycheck modern-cpp-font-lock auto-complete pdf-continuous-scroll-mode pdf-tools paredit parinfer-rust multiple-cursors cmake-mode which-key use-package spacemacs-theme solo-jazz-theme solarized-theme rainbow-delimiters projectile parinfer-rust-mode one-themes modus-themes ivy-rich helpful doom-themes doom-modeline counsel))
+   '(vscode-dark-plus-theme flycheck-clang-tidy yasnippet treemacs-projectile treemacs clang-format+ company ue lsp-ivy lsp-ui lsp-mode all-the-icons-ivy-rich dired-hide-dotfiles all-the-icons-dired all-the-icons exwm dirtrack ivy slime avy markdown-mode flycheck-pkg-config undo-tree ivy-xref dumb-jump flycheck modern-cpp-font-lock auto-complete pdf-continuous-scroll-mode pdf-tools paredit parinfer-rust multiple-cursors cmake-mode which-key use-package spacemacs-theme solo-jazz-theme solarized-theme rainbow-delimiters projectile parinfer-rust-mode one-themes modus-themes ivy-rich helpful doom-themes doom-modeline counsel))
  '(undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo-tree-history/"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -31,9 +31,9 @@
   (add-to-list 'initial-frame-alist '(fullscreen . maximized)) ; Initialize emacs maximized
   (setq frame-resize-pixelwise t)                              ; Adjust to window correctly
   (delete-selection-mode 1)                                    ; Follow the convention of modern editors
-  (setq-default indent-tabs-mode nil)                          ; Prevents extraneous tabs
+  ;; (setq-default indent-tabs-mode nil)                            ; Prevents extraneous tabs
+  (setq-default tab-width 4)                                   ; Tabs width being 4 spaces long
   (set-face-attribute 'default nil :height 100)                ; Make font scale a bit larger
-  (setq browse-url-browser-function 'eww-browse-url)           ; Set the the default url browser
   )
 
 (initial-setup)
@@ -43,11 +43,6 @@
 (make-directory (expand-file-name "tmp/auto-saves/" user-emacs-directory) t)                                 ; create the autosave dir if necessary, since emacs won't.
 (setq auto-save-list-file-prefix (expand-file-name "tmp/auto-saves/sessions/" user-emacs-directory)
       auto-save-file-name-transforms `((".*" ,(expand-file-name "tmp/auto-saves/" user-emacs-directory) t))) ; Put autosave files (ie #foo#) in ~/.emacs.d/ (I think)
-
-
-
-;; ------ Global keybindings ------
-(global-set-key (kbd "C-c d") 'delete-pair)
 
 
 ;; ------ Scrolling and window resizing------
@@ -81,6 +76,7 @@
 (global-set-key (kbd "M-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "M-<left>") 'shrink-window-horizontally)
 
+
 ;; ----- Melpa -----
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -99,13 +95,11 @@
 
 
 ;; ----- Theme -----
-(use-package modus-themes
-  :init
-  (setq modus-themes-italic-constructs t
-        modus-themes-bold-constructs nil
-        modus-themes-region '(bg-only no-extend))
-  :bind ("<f5>" . modus-themes-toggle))
-(load-theme 'modus-vivendi)
+(use-package vscode-dark-plus-theme
+  :ensure t
+  :config
+  (load-theme 'vscode-dark-plus t))
+
 
 ;; ------- Doom modeline -------
 (use-package doom-modeline
@@ -332,8 +326,61 @@
 
 
 ;; ------ ue ------
+;; The Unreal Engine path
+(setq unreal-directory "C:/Users/hecto/Documents/GitHub/UnrealEngine/")  ; <- This must end with a slash
+
+;; Returns the command to perform a pseudo compilation (updates UHT info)
+(defun pseudo-compile-command ()
+  (let* ((project-root (projectile-project-root))
+		 (project-name (projectile-project-name))
+		 (cmd (concat unreal-directory "Engine/Build/BatchFiles/Build.bat"))
+		 (target (concat project-name "Editor"))
+		 (platform "Win64")
+		 (project-file (concat project-root project-name ".uproject")))
+	(concat cmd " " target " " platform " " "DebugGame" " " "-SkipBuild" " " "-project=\"" project-file "\"")))
+
+;; Pseudo compile process handler
+(setq pseudo-compile-process nil)
+
+;; Starts the pseudo compile process
+(defun start-pseudo-compile-process ()
+  (if (and ue-mode (not (and pseudo-compile-process (process-live-p pseudo-compile-process))))
+	  (progn
+		(setq pseudo-compile-process
+			  (start-process-shell-command "Pseudo compile"
+										   nil
+										   (pseudo-compile-command)))
+		(set-process-sentinel pseudo-compile-process (lambda (p e) (flycheck-buffer))))))
+
+
+;; Returns the command to compile a project
+(defun compile-unreal-project-command ()
+  (let* ((project-root (projectile-project-root))
+		 (project-name (projectile-project-name))
+		 (cmd (concat unreal-directory "Engine/Build/BatchFiles/RunUAT.bat"))
+		 (project-file (concat project-root project-name ".uproject")))
+	(concat cmd " " "BuildEditor" " " "-project=\"" project-file "\"")))
+
+;; Compiles a project
+(defun compile-unreal-project ()
+  (interactive)
+  (async-shell-command (print (compile-unreal-project-command) (get-buffer "*scratch*"))))
+
+
+;; Return the command to run a project
+(defun run-unreal-project-command ()
+  (let* ((unreal-executable (concat unreal-directory "Engine/Binaries/Win64/UnrealEditor.exe"))
+		 (project-root (projectile-project-root))
+		 (project-name (projectile-project-name))
+		 (project-file (concat project-root project-name ".uproject")))
+	(concat unreal-executable " " "\"" project-file "\"")))
+
+;; Runs a project
+(defun run-unreal-project ()
+  (interactive)
+  (async-shell-command (run-unreal-project-command)))
+
 (use-package ue
-  :hook   ((lsp-mode . ue-mode))
   :config
   (define-key ue-mode-map (kbd "C-c u") 'ue-command-map)
 
@@ -342,22 +389,56 @@
 
   ;; Associate directories with the read-only class
   (dolist (dir (list "c:/Users/hecto/Documents/GitHub/UnrealEngine"))
-    (dir-locals-set-directory-class (file-truename dir) 'read-only)))
+	(dir-locals-set-directory-class (file-truename dir) 'read-only))
+  
+  :hook
+  ((lsp-mode . ue-mode)
+   (after-save . start-pseudo-compile-process))
+
+  :bind (:map ue-mode-map
+			  ("C-c u c" . compile-unreal-project)
+			  ("C-c u r" . run-unreal-project)))
 
 
 ;; ------ yasnippet ------
 (use-package yasnippet
-  :config (yas-reload-all)
-  :hook (ue-mode . yas-minor-mode)
+  :config
+  (yas-reload-all)
+  :hook ((ue-mode . yas-minor-mode)
+		 (yas-minor-mode . (lambda ()
+							 (add-to-list 'ac-sources 'ac-source-yasnippet))))
   :bind (:map yas-minor-mode-map
               ("<tab>" . nil)
               ("TAB" . nil)
               ("<backtab>" . yas-expand)))
 
 
-;; ------ flycheck ------ Con Unreal Engine va regular
-;; (use-package flycheck
-;;   :hook (lsp . flycheck-mode))
+;; ------ clang-format ------
+(use-package clang-format
+  :config
+  (setq clang-format-style-option "llvm"))
+
+
+;; ------ c-mode ------
+(use-package cc-mode
+  :config
+  (fset 'c-indent-region 'clang-format-region)
+  :bind (:map c-mode-base-map
+			  ("C-<tab>" . clang-format-buffer)
+			  ("C-i" . tab-to-tab-stop)
+			  ("<backspace>" . backward-delete-char)))
+
+
+;; ------ flycheck ------
+(use-package flycheck
+  :hook (lsp-mode . flycheck-mode))
+
+
+;; ------ flycheck-clang-tidy ------
+(use-package flycheck-clang-tidy
+  :after flycheck
+  :hook
+  (flycheck-mode . flycheck-clang-tidy-setup))
 
 
 ;; ------ company ------
@@ -375,112 +456,3 @@
 
 (use-package treemacs-projectile
   :after (treemacs projectile))
-
-
-;; ----- UE4Editor -----
-;; (defvar ue4-projects '())
-;; (defvar ue4-editor nil)
-(defvar ue5-projects '(("ProceduralTest" "C:/Users/hecto/Documents/Unreal Projects/ProceduralTest")))
-(defvar ue5-editor "C:/Users/hecto/Documents/GitHub/UnrealEngine/Engine/Binaries/Win64/UnrealEditor.exe")
-
-
-;; (defun get-ue4-projects ()
-;;   (mapcar #'car ue4-projects))
-
-;; (defun get-ue4-project-directory (project)
-;;   (let ((project-found nil)
-;; 	(rest-ue4-projects ue4-projects))
-;;     (while (and (not project-found) (not (null rest-ue4-projects)))
-;;       (let ((current-project (caar rest-ue4-projects)))
-;; 	(when (equal current-project project)
-;; 	  (setq project-found (cadar rest-ue4-projects)))
-;; 	(setq rest-ue4-projects (cdr rest-ue4-projects))))
-;;     (directory-file-name project-found)))
-
-;; (defun ue4-compile-project ()
-;;   (interactive)
-;;   (ivy-read "Select UE4 project: " (get-ue4-projects)
-;; 	    :require-match t
-;; 	    :action (lambda (project)
-;; 		      (if (y-or-n-p (concat "Do you really want to compile " project "?"))
-;; 			  (let ((project-dir (get-ue4-project-directory project)))
-;; 			    (unless project-dir
-;; 			      (error "Project '%s' not found" project))
-;; 			    (let* ((makefile (concat project-dir "/Makefile"))
-;; 				   (command (concat "make -f" makefile " " project "Editor")))
-;; 			      (async-shell-command command)))
-;; 			(ue4-compile-project)))))
-
-;; (defun ue4-open-project ()
-;;   (interactive)
-;;   (ivy-read "Select UE4 project: " (get-ue4-projects)
-;; 	    :require-match t
-;; 	    :action (lambda (project)
-;; 		      (if (y-or-n-p (concat "Do you really want to open " project "?"))
-;; 			  (let ((project-dir (get-ue4-project-directory project)))
-;; 			    (unless project-dir
-;; 			      (error "Project '%s' not found" project))
-;; 			    (let* ((uproject (concat project-dir "/" project ".uproject"))
-;; 				   (command (concat ue4-editor " " uproject)))
-;; 			      (async-shell-command command)))
-;; 			(ue4-open-project)))))
-
-;; (defun ue4-run-editor ()
-;;   (interactive)
-;;   (if (y-or-n-p "Do you really want to open the Unreal Engine 4 editor?")
-;;       (async-shell-command ue4-editor)))
-
-
-(defun get-ue5-projects ()
-  (mapcar #'car ue5-projects))
-
-(defun get-ue5-project-directory (project)
-  (let ((project-found nil)
-	(rest-ue5-projects ue5-projects))
-    (while (and (not project-found) (not (null rest-ue5-projects)))
-      (let ((current-project (caar rest-ue5-projects)))
-	(when (equal current-project project)
-	  (setq project-found (cadar rest-ue5-projects)))
-	(setq rest-ue5-projects (cdr rest-ue5-projects))))
-    (directory-file-name project-found)))
-
-(defun ue5-compile-project (&optional cleanp)
-  (interactive)
-  (ivy-read "Select UE5 project: " (get-ue5-projects)
-	    :require-match t
-	    :action (lambda (project)
-		      (let ((project-dir (get-ue5-project-directory project)))
-			(unless project-dir
-			  (error "Project '%s' not found" project))
-			(if (y-or-n-p (concat "Do you really want to " (if cleanp "clean and " "") "compile " project "?"))
-			    (let ((compile-command (concat "C:/Users/hecto/Documents/GitHub/UnrealEngine/Engine/Build/BatchFiles/RunUAT.bat BuildEditor -project=\"" project-dir "/" project ".uproject\"")))
-			      (if cleanp
-				  (let ((clean-command (concat "C:/Users/hecto/Documents/GitHub/UnrealEngine/Engine/Build/BatchFiles/Clean.bat -Target=\"" project
-							       "Editor Win64 Development\" -Project=\"" project-dir "/" project ".uproject -WaitMutex -FromMSBuild\"")))
-				    (async-shell-command (concat clean-command " && " compile-command)))
-				(async-shell-command compile-command)))
-			  (ue5-compile-project))))))
-
-(defun ue5-clean-compile-project ()
-  (interactive)
-  (ue5-compile-project t))
-
-(defun ue5-open-project ()
-  (interactive)
-  (ivy-read "Select UE5 project: " (get-ue5-projects)
-	    :require-match t
-	    :action (lambda (project)
-		      (if (y-or-n-p (concat "Do you really want to open " project "?"))
-			  (let ((project-dir (get-ue5-project-directory project)))
-			    (unless project-dir
-			      (error "Project '%s' not found" project))
-			    (let* ((uproject (concat "\"" project-dir "/" project ".uproject" "\""))
-				   (command (concat ue5-editor " " uproject)))
-			      (async-shell-command command)))
-			(ue5-open-project)))))
-
-
-(defun ue5-run-editor ()
-  (interactive)
-  (if (y-or-n-p "Do you really want to open the Unreal Engine 5 editor?")
-      (async-shell-command ue5-editor)))

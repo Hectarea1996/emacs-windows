@@ -222,15 +222,17 @@ is set to `alien'."
 
 (defun ue-project-root ()
   "Return Unreal Emacs root directory if this file is part of the Unreal Emacs project else nil."
-  (let* ((cache-key   (ue--cache-key "root"))
-	 (cache-value (gethash cache-key ue--cache-data)))
-    (or cache-value
-	(ignore-errors
-	  (let ((root (projectile-locate-dominating-file
-		       default-directory
-		       ue--uemacs-dir)))
-	    (puthash cache-key root ue--cache-data)
-	    root)))))
+  (projectile-project-root)
+  ;; (let* ((cache-key   (ue--cache-key "root"))
+  ;;        (cache-value (gethash cache-key ue--cache-data)))
+  ;;   (or cache-value
+  ;;       (ignore-errors
+  ;;         (let ((root (projectile-locate-dominating-file
+  ;;       	       default-directory
+  ;;       	       ue--uemacs-dir)))
+  ;;           (puthash cache-key root ue--cache-data)
+  ;;           root))))
+  )
 
 (defun ue--uemacs-dir ()
   "Return absolute path to `.uemacs' directory if this is Unreal Emacs project, nil otherwise."
@@ -436,9 +438,10 @@ Return current target if ID is falsy."
   "Compile project for the current build target.
 
 If there is no target set, prompt user to choose it and then compile."
-  (let ((compilation-read-command  nil)
-	(compilation-scroll-output t))
-    (projectile-compile-project nil)))
+  ;; (let ((compilation-read-command  nil)
+  ;;       (compilation-scroll-output t))
+  ;;   (projectile-compile-project nil))
+  )
 
 ;;; Path helpers
 
@@ -562,10 +565,12 @@ COMPONENT could be a regexp."
 ;; i.e.  "Config"  directory  location, "Source"  directory  location,
 ;; location of the "DefaultGame.ini" file, etc.
 (defun ue--project-header-files ()
-    "Return a list of project header files."
+  "Return a list of project header files."
+  (print "Casa" (get-buffer "*scratch*"))
     (let ((source-directory (expand-file-name
 			     "Source"
-			     (ue-project-root))))
+			     (print (ue-project-root) (get-buffer "*scratch*")))))
+      (print source-directory (get-buffer "*scratch*"))
       (directory-files-recursively source-directory ".*\\.h")))
 
 (defun ue--find-full-class-name (header-file)
@@ -594,12 +599,13 @@ files in the project and then uses their names as project file
 names.  But the class prefixes are unknown.  One can look for
 class name inside the files but get full class name from there
 but I'm not sure if its fast enough to do."
+  (print "Ja" (get-buffer "*scratch*"))
   (let ((classes '()))
     (seq-do (lambda (header)
 	      (when-let ((class-name (ue--find-full-class-name header))
 			 (include    (ue--rel-include-path header)))
 		(setq classes (push `(,class-name . ,include) classes))))
-	    (ue--project-header-files))
+	    (print (ue--project-header-files) "*scratch*"))
     classes))
 
 (defun ue--known-classes ()
@@ -764,7 +770,9 @@ derive its location from the HEADER-DIR."
 	 (headers       (when super-header (list super-header)))
 	 (copyright     (ue--copyright))
 	 (copyright     (if copyright copyright "TODO: Copyright")))
+    (print "Hola" (get-buffer "*scratch*"))
     (make-directory header-dir t)
+    (print "Adios" (get-buffer "*scratch*"))
     (make-directory source-dir t)
     (write-region (ue--gen-class-header
 		   class
@@ -774,6 +782,7 @@ derive its location from the HEADER-DIR."
 		   copyright)
 		  ""
 		  header-file)
+    (print "Hola2" (get-buffer "*scratch*"))
     (write-region (ue--gen-source
 		   header-file
 		   copyright)
@@ -897,12 +906,14 @@ derive its location from the `HEADER-DIR'."
 (defun ue-generate-class ()
   "Generate a new class for the project."
   (interactive)
-  (when-let* ((known-classes (ue--known-classes))
+  (print "Pera" (get-buffer "*scratch*"))
+  (when-let* ((known-classes (print (ue--known-classes) (get-buffer "*scratch*")))
 	      (super-class   (ue--select-gen-super-class
 			      (ue--alist-keys known-classes)))
 	      (derived-class (ue--select-gen-derived-class
 			      super-class))
 	      (header-dir    (ue--select-gen-header-dir)))
+    (print "Pesa" (get-buffer "*scratch*"))
     (ue--generate-class header-dir
 			known-classes
 			derived-class
