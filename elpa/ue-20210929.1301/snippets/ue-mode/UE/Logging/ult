@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: UE_TEMP_LOG
+# key: ult
+# --
+UE_LOG(LogTemp, Warning, TEXT("$0"));
