@@ -1,0 +1,35 @@
+;; Object semanticdb-project-database-file-662f5d5e2c
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-662f5d5e2c"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-662f5d5e0c"
+      :major-mode c-mode
+      :tags 
+        '( ("CoreMinimal.h" include nil nil [15 39])
+            ("Mission.generated.h" include nil nil [40 70])
+            ("EMissionState" type
+               (:superclasses 
+                  ( ("uint8" type
+                       (:protection "unspecified"
+                        :type "class")
+                        nil nil))                  
+                :type "class")
+                nil [150 356])
+            ("DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("FOnMissionStateChange" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [402 424])
+                    ("" variable (:type ("EMissionState" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [425 439])
+                    ("" variable (:type ("NewState" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [440 449]))                  
+                :type "int")
+                nil [358 450])
+            ("UObject" variable (:type "int") nil [582 2505]))          
+      :file "Mission.h"
+      :pointmax 2506
+      :fsize 2617
+      :lastmodtime '(25651 47675 0 0)
+      :unmatched-syntax nil))
+  :file "!drive_c!Users!hecto!Documents!Unreal Projects!ProceduralTest!Source!ProceduralTest!Public!Missions!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

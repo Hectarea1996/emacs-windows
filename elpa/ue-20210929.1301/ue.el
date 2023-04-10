@@ -571,7 +571,7 @@ COMPONENT could be a regexp."
 			     "Source"
 			     (print (ue-project-root) (get-buffer "*scratch*")))))
       (print source-directory (get-buffer "*scratch*"))
-      (directory-files-recursively source-directory ".*\\.h")))
+      (print (directory-files-recursively source-directory ".*\\.h") (get-buffer "*scratch*"))))
 
 (defun ue--find-full-class-name (header-file)
   "Return the full name of the class declared in the HEADER-FILE.
@@ -605,7 +605,7 @@ but I'm not sure if its fast enough to do."
 	      (when-let ((class-name (ue--find-full-class-name header))
 			 (include    (ue--rel-include-path header)))
 		(setq classes (push `(,class-name . ,include) classes))))
-	    (print (ue--project-header-files) "*scratch*"))
+	    (print (ue--project-header-files) (get-buffer "*scratch*")))
     classes))
 
 (defun ue--known-classes ()

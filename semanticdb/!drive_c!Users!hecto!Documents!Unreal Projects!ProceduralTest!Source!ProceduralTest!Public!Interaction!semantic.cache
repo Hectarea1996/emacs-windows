@@ -1,0 +1,20 @@
+;; Object semanticdb-project-database-file-66f73359c4
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-66f73359c4"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-66f733a9ac"
+      :major-mode c-mode
+      :tags 
+        '( ("CoreMinimal.h" include nil nil [95 119])
+            ("Components/BoxComponent.h" include nil nil [120 156])
+            ("InteractiveBoxComponent.generated.h" include nil nil [157 203])
+            ("UBoxComponent" variable (:type "int") nil [476 4479]))          
+      :file "InteractiveBoxComponent.h"
+      :pointmax 4480
+      :fsize 4675
+      :lastmodtime '(25651 55510 0 0)
+      :unmatched-syntax nil))
+  :file "!drive_c!Users!hecto!Documents!Unreal Projects!ProceduralTest!Source!ProceduralTest!Public!Interaction!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

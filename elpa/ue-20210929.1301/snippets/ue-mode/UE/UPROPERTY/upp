@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Private property
+# key: upe
+# condition: (ue--yas-can-expand-p)
+# --
+/**
+ * @brief
+ */
+UPROPERTY()
+int $0MyProperty;

@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Private access property
+# key: upe
+# condition: (ue--yas-can-expand-p)
+# --
+/**
+ * @brief
+ */
+UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="`(file-name-base)`", meta=(AllowPrivateAccess = true))
+int $0MyProperty;

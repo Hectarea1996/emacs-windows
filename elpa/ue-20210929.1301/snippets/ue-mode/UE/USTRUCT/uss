@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: Struct declaration
+# key: uss
+# condition: (ue--yas-can-expand-p)
+# --
+/**
+ * @brief
+ */
+USTRUCT(BlueprintType)
+struct `(ue--api-macro-name)` F${1:MyStruct}
+{
+
+	GENERATED_BODY()
+
+};

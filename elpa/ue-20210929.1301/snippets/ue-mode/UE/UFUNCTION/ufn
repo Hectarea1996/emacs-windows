@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Native event
+# key: ufn
+# condition: (ue--yas-can-expand-p)
+# --
+/**
+ * @brief
+ */
+UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="`(file-name-base)`")
+void $0MyFunction();

@@ -1,10 +1,10 @@
 # -*- mode: snippet -*-
-# name: Editable UPROPERTY
+# name: Editable property
 # key: upe
 # condition: (ue--yas-can-expand-p)
 # --
 /**
- * $6
+ * @brief
  */
-UPROPERTY(Edit${1:Anywhere}, ${2:BlueprintReadWrite}${2:$(when (not (string-blank-p yas-text)) ", ")}Category="${3:`(file-name-base)`}")
-${4:int32} ${5:MyProperty};
+UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="`(file-name-base)`")
+int $0MyProperty;

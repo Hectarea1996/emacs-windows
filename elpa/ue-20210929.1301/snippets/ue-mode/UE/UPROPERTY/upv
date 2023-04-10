@@ -1,10 +1,10 @@
 # -*- mode: snippet -*-
-# name: Visible UPROPERTY
-# key: upv
+# name: Visible property
+# key: upe
 # condition: (ue--yas-can-expand-p)
 # --
 /**
- * $5
+ * @brief
  */
-UPROPERTY(Visible${1:Anywhere}, BlueprintReadOnly, Category="${2:`(file-name-base)`}")
-${3:int32} ${4:MyProperty};
+UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="`(file-name-base)`")
+int $0MyProperty;

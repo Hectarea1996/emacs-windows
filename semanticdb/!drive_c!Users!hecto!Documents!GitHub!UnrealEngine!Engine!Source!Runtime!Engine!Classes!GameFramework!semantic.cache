@@ -1,0 +1,746 @@
+;; Object semanticdb-project-database-file-66f6f66840
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-66f6f66840"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-66f6f6689c"
+      :major-mode c++-mode
+      :tags 
+        '( ("CoreMinimal.h" include nil nil [67 91])
+            ("Stats/Stats.h" include nil nil [92 116])
+            ("UObject/ObjectMacros.h" include nil nil [117 150])
+            ("UObject/UObjectBaseUtility.h" include nil nil [151 190])
+            ("UObject/Object.h" include nil nil [191 218])
+            ("InputCoreTypes.h" include nil nil [219 246])
+            ("Templates/SubclassOf.h" include nil nil [247 280])
+            ("UObject/CoreNet.h" include nil nil [281 309])
+            ("Engine/EngineTypes.h" include nil nil [310 341])
+            ("Engine/EngineBaseTypes.h" include nil nil [342 377])
+            ("PropertyPairsMap.h" include nil nil [378 407])
+            ("Components/ChildActorComponent.h" include nil nil [408 451])
+            ("RenderCommandFence.h" include nil nil [452 483])
+            ("Engine/Level.h" include nil nil [484 509])
+            ("Net/Core/Misc/NetSubObjectRegistry.h" include nil nil [510 557])
+            ("Engine/HitResult.h" include nil nil [558 587])
+            ("Engine/ReplicatedState.h" include nil nil [588 623])
+            ("WorldPartition/WorldPartitionActorDescType.h" include nil nil [722 777])
+            ("Actor.generated.h" include nil nil [779 807])
+            ("AActor" type
+               (:prototype t
+                :type "class")
+                nil [809 822])
+            ("AController" type
+               (:prototype t
+                :type "class")
+                nil [823 841])
+            ("APawn" type
+               (:prototype t
+                :type "class")
+                nil [842 854])
+            ("APlayerController" type
+               (:prototype t
+                :type "class")
+                nil [855 879])
+            ("UActorChannel" type
+               (:prototype t
+                :type "class")
+                nil [880 900])
+            ("UChildActorComponent" type
+               (:prototype t
+                :type "class")
+                nil [901 928])
+            ("UNetDriver" type
+               (:prototype t
+                :type "class")
+                nil [929 946])
+            ("UPrimitiveComponent" type
+               (:prototype t
+                :type "class")
+                nil [947 973])
+            ("FAttachedActorInfo" type
+               (:prototype t
+                :type "struct")
+                nil [974 1000])
+            ("FNetViewer" type
+               (:prototype t
+                :type "struct")
+                nil [1001 1019])
+            ("FNetworkObjectInfo" type
+               (:prototype t
+                :type "struct")
+                nil [1020 1046])
+            ("FActorTransactionAnnotation" type
+               (:prototype t
+                :type "class")
+                nil [1047 1081])
+            ("FComponentInstanceDataCache" type
+               (:prototype t
+                :type "class")
+                nil [1082 1116])
+            ("UDEPRECATED_DataLayer" type
+               (:prototype t
+                :type "class")
+                nil [1117 1145])
+            ("UDataLayerAsset" type
+               (:prototype t
+                :type "class")
+                nil [1146 1168])
+            ("UDataLayerInstance" type
+               (:prototype t
+                :type "class")
+                nil [1169 1194])
+            ("AWorldDataLayers" type
+               (:prototype t
+                :type "class")
+                nil [1195 1218])
+            ("UActorFolder" type
+               (:prototype t
+                :type "class")
+                nil [1296 1315])
+            ("ACTOR_HAS_LABELS" variable (:constant-flag t) nil [1517 1533])
+            ("EActorUpdateOverlapsMethod" type
+               (:superclasses 
+                  ( ("uint8" type
+                       (:protection "unspecified"
+                        :type "class")
+                        nil nil))                  
+                :type "class")
+                nil [1768 2110])
+            ("DECLARE_LOG_CATEGORY_EXTERN" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("LogActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2661 2670])
+                    ("" variable (:type ("Log" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2671 2675])
+                    ("" variable (:type ("Warning" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2676 2684]))                  
+                :type ("ENGINE_API" type (:type "class") nil nil))
+                nil [2622 2685])
+            ("DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_FiveParams" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("FTakeAnyDamageSignature" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2764 2788])
+                    ("" variable (:type ("AActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2789 2796])
+                    ("" variable (:type ("OnTakeAnyDamage" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2797 2813])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2814 2822])
+                    ("" variable (:type ("DamagedActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2823 2836])
+                    ("" variable (:type "float") (reparse-symbol arg-sub-list) [2837 2843])
+                    ("" variable (:type ("Damage" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2844 2851])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("UDamageType" type
+                             (:prototype t
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [2852 2877])
+                    ("" variable (:type ("DamageType" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2878 2889])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AController" type
+                             (:prototype t
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [2890 2909])
+                    ("" variable (:type ("InstigatedBy" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2910 2923])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2924 2932])
+                    ("" variable (:type ("DamageCauser" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2933 2947]))                  
+                :type "int")
+                nil [2710 2948])
+            ("DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_NineParams" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("FTakePointDamageSignature" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3003 3029])
+                    ("" variable (:type ("AActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3030 3037])
+                    ("" variable (:type ("OnTakePointDamage" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3038 3056])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3057 3065])
+                    ("" variable (:type ("DamagedActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3066 3079])
+                    ("" variable (:type "float") (reparse-symbol arg-sub-list) [3080 3086])
+                    ("" variable (:type ("Damage" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3087 3094])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AController" type
+                             (:prototype t
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [3095 3114])
+                    ("" variable (:type ("InstigatedBy" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3115 3128])
+                    ("" variable (:type ("FVector" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3129 3137])
+                    ("" variable (:type ("HitLocation" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3138 3150])
+                    ("" variable
+                       (:pointer 1
+                        :type ("UPrimitiveComponent" type
+                             (:prototype t
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [3151 3178])
+                    ("" variable (:type ("FHitComponent" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3179 3193])
+                    ("" variable (:type ("FName" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3194 3200])
+                    ("" variable (:type ("BoneName" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3201 3210])
+                    ("" variable (:type ("FVector" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3211 3219])
+                    ("" variable (:type ("ShotFromDirection" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3220 3238])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("UDamageType" type
+                             (:prototype t
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [3239 3264])
+                    ("" variable (:type ("DamageType" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3265 3276])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3277 3285])
+                    ("" variable (:type ("DamageCauser" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3286 3300]))                  
+                :type "int")
+                nil [2949 3301])
+            ("DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_SevenParams" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("FTakeRadialDamageSignature" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3357 3384])
+                    ("" variable (:type ("AActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3385 3392])
+                    ("" variable (:type ("OnTakeRadialDamage" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3393 3412])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3413 3421])
+                    ("" variable (:type ("DamagedActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3422 3435])
+                    ("" variable (:type "float") (reparse-symbol arg-sub-list) [3436 3442])
+                    ("" variable (:type ("Damage" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3443 3450])
+                    ("" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("UDamageType" type
+                             (:prototype t
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [3451 3476])
+                    ("" variable (:type ("DamageType" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3477 3488])
+                    ("" variable (:type ("FVector" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3489 3497])
+                    ("" variable (:type ("Origin" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3498 3505])
+                    ("" variable (:type ("FHitResult" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3506 3517])
+                    ("" variable (:type ("HitInfo" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3518 3526])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AController" type
+                             (:prototype t
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [3527 3546])
+                    ("" variable (:type ("InstigatedBy" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3547 3560])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3561 3569])
+                    ("" variable (:type ("DamageCauser" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3570 3584]))                  
+                :type "int")
+                nil [3302 3585])
+            ("DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_TwoParams" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("FActorBeginOverlapSignature" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3639 3667])
+                    ("" variable (:type ("AActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3668 3675])
+                    ("" variable (:type ("OnActorBeginOverlap" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3676 3696])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3697 3705])
+                    ("" variable (:type ("OverlappedActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3706 3722])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3723 3731])
+                    ("" variable (:type ("OtherActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3732 3744]))                  
+                :type "int")
+                nil [3586 3745])
+            ("DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_TwoParams" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("FActorEndOverlapSignature" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3799 3825])
+                    ("" variable (:type ("AActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3826 3833])
+                    ("" variable (:type ("OnActorEndOverlap" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3834 3852])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3853 3861])
+                    ("" variable (:type ("OverlappedActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3862 3878])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3879 3887])
+                    ("" variable (:type ("OtherActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3888 3900]))                  
+                :type "int")
+                nil [3746 3901])
+            ("DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_FourParams" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("FActorHitSignature" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3956 3975])
+                    ("" variable (:type ("AActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3976 3983])
+                    ("" variable (:type ("OnActorHit" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3984 3995])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3996 4004])
+                    ("" variable (:type ("SelfActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4005 4015])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4016 4024])
+                    ("" variable (:type ("OtherActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4025 4036])
+                    ("" variable (:type ("FVector" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4037 4045])
+                    ("" variable (:type ("NormalImpulse" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4046 4060])
+                    ("" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type ("FHitResult" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4061 4079])
+                    ("" variable (:type ("Hit" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4080 4085]))                  
+                :type "int")
+                nil [3902 4086])
+            ("DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_OneParam" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("FActorBeginCursorOverSignature" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4140 4171])
+                    ("" variable (:type ("AActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4172 4179])
+                    ("" variable (:type ("OnBeginCursorOver" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4180 4198])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4199 4207])
+                    ("" variable (:type ("TouchedActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4208 4222]))                  
+                :type "int")
+                nil [4088 4223])
+            ("DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_OneParam" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("FActorEndCursorOverSignature" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4276 4305])
+                    ("" variable (:type ("AActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4306 4313])
+                    ("" variable (:type ("OnEndCursorOver" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4314 4330])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4331 4339])
+                    ("" variable (:type ("TouchedActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4340 4354]))                  
+                :type "int")
+                nil [4224 4355])
+            ("DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_TwoParams" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("FActorOnClickedSignature" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4409 4434])
+                    ("" variable (:type ("AActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4435 4442])
+                    ("" variable (:type ("OnClicked" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4443 4453])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4454 4462])
+                    ("" variable (:type ("TouchedActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4463 4477])
+                    ("" variable (:type ("FKey" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4478 4483])
+                    ("" variable (:type ("ButtonPressed" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4484 4499]))                  
+                :type "int")
+                nil [4356 4500])
+            ("DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_TwoParams" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("FActorOnReleasedSignature" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4554 4580])
+                    ("" variable (:type ("AActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4581 4588])
+                    ("" variable (:type ("OnReleased" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4589 4600])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4601 4609])
+                    ("" variable (:type ("TouchedActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4610 4624])
+                    ("" variable (:type ("FKey" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4625 4630])
+                    ("" variable (:type ("ButtonReleased" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4631 4647]))                  
+                :type "int")
+                nil [4501 4648])
+            ("DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_TwoParams" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("FActorOnInputTouchBeginSignature" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4702 4735])
+                    ("" variable (:type ("AActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4736 4743])
+                    ("" variable (:type ("OnInputTouchBegin" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4744 4762])
+                    ("" variable (:type ("ETouchIndex::Type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4763 4781])
+                    ("" variable (:type ("FingerIndex" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4782 4794])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4795 4803])
+                    ("" variable (:type ("TouchedActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4804 4818]))                  
+                :type "int")
+                nil [4649 4819])
+            ("DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_TwoParams" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("FActorOnInputTouchEndSignature" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4873 4904])
+                    ("" variable (:type ("AActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4905 4912])
+                    ("" variable (:type ("OnInputTouchEnd" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4913 4929])
+                    ("" variable (:type ("ETouchIndex::Type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4930 4948])
+                    ("" variable (:type ("FingerIndex" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4949 4961])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4962 4970])
+                    ("" variable (:type ("TouchedActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4971 4985]))                  
+                :type "int")
+                nil [4820 4986])
+            ("DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_TwoParams" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("FActorBeginTouchOverSignature" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5040 5070])
+                    ("" variable (:type ("AActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5071 5078])
+                    ("" variable (:type ("OnInputTouchEnter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5079 5097])
+                    ("" variable (:type ("ETouchIndex::Type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5098 5116])
+                    ("" variable (:type ("FingerIndex" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5117 5129])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5130 5138])
+                    ("" variable (:type ("TouchedActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5139 5153]))                  
+                :type "int")
+                nil [4987 5154])
+            ("DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_TwoParams" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("FActorEndTouchOverSignature" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5208 5236])
+                    ("" variable (:type ("AActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5237 5244])
+                    ("" variable (:type ("OnInputTouchLeave" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5245 5263])
+                    ("" variable (:type ("ETouchIndex::Type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5264 5282])
+                    ("" variable (:type ("FingerIndex" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5283 5295])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5296 5304])
+                    ("" variable (:type ("TouchedActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5305 5319]))                  
+                :type "int")
+                nil [5155 5320])
+            ("DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_OneParam" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("FActorDestroyedSignature" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5373 5398])
+                    ("" variable (:type ("AActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5399 5406])
+                    ("" variable (:type ("OnDestroyed" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5407 5419])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5420 5428])
+                    ("" variable (:type ("DestroyedActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5429 5445]))                  
+                :type "int")
+                nil [5322 5446])
+            ("DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_TwoParams" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("FActorEndPlaySignature" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5499 5522])
+                    ("" variable (:type ("AActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5523 5530])
+                    ("" variable (:type ("OnEndPlay" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5531 5541])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5542 5550])
+                    ("" variable (:type ("Actor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5551 5558])
+                    ("" variable (:type ("EEndPlayReason::Type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5559 5580])
+                    ("" variable (:type ("EndPlayReason" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5581 5595]))                  
+                :type "int")
+                nil [5447 5596])
+            ("DECLARE_DELEGATE_SixParams" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("FMakeNoiseDelegate" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5625 5644])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5645 5653])
+                    ("" variable (:type "float") (reparse-symbol arg-sub-list) [5654 5673])
+                    ("" variable
+                       (:pointer 1
+                        :type ("APawn" type
+                             (:prototype t
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [5674 5687])
+                    ("" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type ("FVector" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5688 5703])
+                    ("" variable (:type "float") (reparse-symbol arg-sub-list) [5704 5723])
+                    ("" variable (:type ("FName" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5724 5738]))                  
+                :type "int")
+                nil [5598 5739])
+            ("DECLARE_DELEGATE_RetVal_ThreeParams" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type "bool") (reparse-symbol arg-sub-list) [5918 5923])
+                    ("" variable (:type ("FOnProcessEvent" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5924 5940])
+                    ("" variable
+                       (:pointer 1
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5941 5949])
+                    ("" variable
+                       (:pointer 1
+                        :type ("UFunction" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5950 5961])
+                    ("" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [5962 5968]))                  
+                :type "int")
+                nil [5882 5969])
+            ("TInlineComponentArray" type
+               (:template 
+                  ( ("T" type (:type "class") nil nil)
+                    ("uint32" type (:typevar "NumElements") nil nil))                  
+                :type "class"
+                :members 
+                  ( ("Super" type
+                       (:typedef ("TArray" type
+                             (:template-specifier 
+                                ( ("T" type nil nil nil)
+                                  ("TInlineAllocator" type (:template-specifier 
+                                    ( ("NumElements" type nil nil nil))                                    ) nil nil))                                
+                              :type "class")
+                              nil nil)
+                        :type "typedef")
+                        (reparse-symbol classsubparts) [6344 6399])
+                    ("public" label nil (reparse-symbol classsubparts) [6401 6408])
+                    ("TInlineComponentArray" function
+                       (:constructor-flag t
+                        :type ("TInlineComponentArray" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [6410 6447])
+                    ("TInlineComponentArray" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("Actor" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("AActor" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [6471 6491])
+                            ("bIncludeFromChildActors" variable
+                               (:default-value "false"
+                                :type "bool")
+                                (reparse-symbol arg-sub-list) [6492 6528]))                          
+                        :type ("TInlineComponentArray" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [6449 6530]))                  
+                :superclasses 
+                  ( ("TArray" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  )
+                nil [6197 6533])
+            ("UObject" variable
+               (:dereference 1
+                :type "int")
+                nil [10526 201103])
+            ("FMarkActorIsBeingDestroyed" type
+               (:members 
+                  ( ("private" label nil (reparse-symbol classsubparts) [201211 201219])
+                    ("FMarkActorIsBeingDestroyed" function
+                       (:constructor-flag t
+                        :arguments 
+                          ( ("InActor" variable
+                               (:pointer 1
+                                :type ("AActor" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [201248 201264]))                          
+                        :type ("FMarkActorIsBeingDestroyed" type (:type "struct") nil nil))
+                        (reparse-symbol classsubparts) [201221 201312])
+                    ("UWorld" variable
+                       (:typemodifiers ("friend")
+                        :type "int")
+                        (reparse-symbol classsubparts) [201315 201329]))                  
+                :type "struct")
+                nil [201175 201332])
+            ("FSetActorWantsDestroyDuringBeginPlay" type
+               (:members 
+                  ( ("private" label nil (reparse-symbol classsubparts) [201516 201524])
+                    ("FSetActorWantsDestroyDuringBeginPlay" function
+                       (:constructor-flag t
+                        :arguments 
+                          ( ("InActor" variable
+                               (:pointer 1
+                                :type ("AActor" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [201563 201579]))                          
+                        :type ("FSetActorWantsDestroyDuringBeginPlay" type (:type "struct") nil nil))
+                        (reparse-symbol classsubparts) [201526 201746])
+                    ("UWorld" variable
+                       (:typemodifiers ("friend")
+                        :type "int")
+                        (reparse-symbol classsubparts) [201749 201763]))                  
+                :type "struct")
+                nil [201470 201766])
+            ("FActorLastRenderTime" type
+               (:members 
+                  ( ("private" label nil (reparse-symbol classsubparts) [201918 201926])
+                    ("Set" function
+                       (:typemodifiers ("static")
+                        :arguments 
+                          ( ("InActor" variable
+                               (:pointer 1
+                                :type ("AActor" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [201944 201960])
+                            ("LastRenderTime" variable (:type "float") (reparse-symbol arg-sub-list) [201961 201982]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [201928 202032])
+                    ("GetPtr" function
+                       (:pointer 1
+                        :typemodifiers ("static")
+                        :arguments 
+                          ( ("InActor" variable
+                               (:pointer 1
+                                :type ("AActor" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [202056 202072]))                          
+                        :type "float")
+                        (reparse-symbol classsubparts) [202035 202135])
+                    ("UPrimitiveComponent" friend nil (reparse-symbol classsubparts) [202138 202170])
+                    ("FPrimitiveSceneInfo" friend nil (reparse-symbol classsubparts) [202173 202205]))                  
+                :type "struct")
+                nil [201888 202209])
+            ("ExecuteTickHelper" function
+               (:template 
+                  ( ("ExecuteTickLambda" type (:type "class") nil nil))                  
+                :type "void"
+                :arguments 
+                  ( ("Target" variable
+                       (:pointer 1
+                        :type ("UActorComponent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [203211 203235])
+                    ("bTickInEditor" variable (:type "bool") (reparse-symbol arg-sub-list) [203236 203255])
+                    ("DeltaTime" variable (:type "float") (reparse-symbol arg-sub-list) [203256 203272])
+                    ("TickType" variable (:type ("ELevelTick" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [203273 203293])
+                    ("ExecuteTickFunc" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type ("ExecuteTickLambda" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [203294 203335]))                  
+                :parent "FActorComponentTickFunction")
+                nil [203121 204009])
+            ("TInlineComponentArray" function
+               (:template 
+                  ( ("T" type (:type "class") nil nil)
+                    ("uint32" type (:typevar "NumElements") nil nil))                  
+                :type ("TInlineComponentArray" type (:type "class") nil nil)
+                :arguments 
+                  ( ("Actor" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("AActor" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [204110 204130])
+                    ("bIncludeFromChildActors" variable (:type "bool") (reparse-symbol arg-sub-list) [204131 204160]))                  
+                :parent "TInlineComponentArray"
+                :constructor-flag t)
+                nil [204011 204250])
+            ("K2_GetActorLocation" function
+               (:methodconst-flag t
+                :parent "AActor"
+                :type ("FVector" type (:type "class") nil nil))
+                nil [204363 204438])
+            ("K2_GetActorRotation" function
+               (:methodconst-flag t
+                :parent "AActor"
+                :type ("FRotator" type (:type "class") nil nil))
+                nil [204463 204539])
+            ("K2_GetRootComponent" function
+               (:methodconst-flag t
+                :pointer 1
+                :parent "AActor"
+                :type ("USceneComponent" type (:type "class") nil nil))
+                nil [204564 204648])
+            ("GetActorForwardVector" function
+               (:methodconst-flag t
+                :parent "AActor"
+                :type ("FVector" type (:type "class") nil nil))
+                nil [204673 204786])
+            ("GetActorUpVector" function
+               (:methodconst-flag t
+                :parent "AActor"
+                :type ("FVector" type (:type "class") nil nil))
+                nil [204811 204914])
+            ("GetActorRightVector" function
+               (:methodconst-flag t
+                :parent "AActor"
+                :type ("FVector" type (:type "class") nil nil))
+                nil [204939 205048])
+            ("GetSimpleCollisionRadius" function
+               (:methodconst-flag t
+                :parent "AActor"
+                :type "float")
+                nil [205063 205205])
+            ("GetSimpleCollisionHalfHeight" function
+               (:methodconst-flag t
+                :parent "AActor"
+                :type "float")
+                nil [205219 205369])
+            ("GetSimpleCollisionCylinderExtent" function
+               (:methodconst-flag t
+                :parent "AActor"
+                :type ("FVector" type (:type "class") nil nil))
+                nil [205383 205564])
+            ("GetActorEnableCollision" function
+               (:methodconst-flag t
+                :parent "AActor"
+                :type "bool")
+                nil [205589 205668])
+            ("HasAuthority" function
+               (:methodconst-flag t
+                :parent "AActor"
+                :type "bool")
+                nil [205693 205774])
+            ("GetOwner" function
+               (:methodconst-flag t
+                :pointer 1
+                :parent "AActor"
+                :type ("AActor" type (:type "class") nil nil))
+                nil [205799 205852])
+            ("GetNetOwner" function
+               (:methodconst-flag t
+                :pointer 1
+                :parent "AActor"
+                :constant-flag t
+                :type ("AActor" type (:type "class") nil nil))
+                nil [205877 206066])
+            ("GetRemoteRole" function
+               (:methodconst-flag t
+                :parent "AActor"
+                :type ("ENetRole" type (:type "class") nil nil))
+                nil [206091 206153])
+            ("GetNetMode" function
+               (:methodconst-flag t
+                :parent "AActor"
+                :type ("ENetMode" type (:type "class") nil nil))
+                nil [206178 206536])
+            ("IsNetMode" function
+               (:methodconst-flag t
+                :parent "AActor"
+                :arguments 
+                  ( ("Mode" variable (:type ("ENetMode" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [206584 206598]))                  
+                :type "bool")
+                nil [206561 207215])
+            ("DEFINE_ACTORDESC_TYPE" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("AActor" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [207462 207469])
+                    ("" variable (:type ("FWorldPartitionActorDesc" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [207470 207495]))                  
+                :type "int")
+                nil [207440 207496])
+            ("HIDE_ACTOR_TRANSFORM_FUNCTIONS" variable (:constant-flag t) nil [207867 207897]))          
+      :file "Actor.h"
+      :pointmax 214567
+      :fsize 214566
+      :lastmodtime '(25614 3445 0 0)
+      :unmatched-syntax '((symbol 206538 . 206560) (symbol 206155 . 206177) (symbol 206068 . 206090) (symbol 205854 . 205876) (symbol 205776 . 205798) (symbol 205670 . 205692) (symbol 205566 . 205588) (symbol 205371 . 205382) (symbol 205207 . 205218) (symbol 205051 . 205062) (symbol 204916 . 204938) (symbol 204788 . 204810) (symbol 204650 . 204672) (symbol 204541 . 204563) (symbol 204440 . 204462) (symbol 204340 . 204362) (punctuation 204250 . 204251) (punctuation 202205 . 202206) (punctuation 202170 . 202171) (PUBLIC 10519 . 10525) (punctuation 10517 . 10518) (symbol 10510 . 10516) (symbol 10499 . 10509) (CLASS 10493 . 10498) (semantic-list 10358 . 10492) (symbol 10352 . 10358) (symbol 2096 . 2107) (punctuation 2043 . 2044) (symbol 2026 . 2043) (punctuation 1967 . 1968) (symbol 1955 . 1967) (punctuation 1901 . 1902) (symbol 1885 . 1901) (ENUM 1763 . 1767) (semantic-list 1747 . 1762) (symbol 1742 . 1747) (symbol 61 . 65) (symbol 54 . 60) (punctuation 53 . 54))
+      :lexical-table 
+        '(("HIDE_ACTOR_TRANSFORM_FUNCTIONS" (spp-arg-list nil 207897 . 207899) . 
+              ((PRIVATE "private" 207900 . 207907) (punctuation ":" 207907 . 207908) (symbol "FTransform" 207912 . 207922) (symbol "GetTransform" 207923 . 207935) (semantic-list "()" 207935 . 207937) (CONST "const" 207938 . 207943) (semantic-list "{ return Super::GetTransform(); }" 207944 . 207977) (symbol "FTransform" 207981 . 207991) (symbol "GetActorTransform" 207992 . 208009) (semantic-list "()" 208009 . 208011) (CONST "const" 208012 . 208017) (semantic-list "{ return Super::GetActorTransform(); }" 208018 . 208056) (symbol "FVector" 208060 . 208067) (symbol "GetActorLocation" 208068 . 208084) (semantic-list "()" 208084 . 208086) (CONST "const" 208087 . 208092) (semantic-list "{ return Super::GetActorLocation(); }" 208093 . 208130) (symbol "FRotator" 208134 . 208142) (symbol "GetActorRotation" 208143 . 208159) (semantic-list "()" 208159 . 208161) (CONST "const" 208162 . 208167) (semantic-list "{ return Super::GetActorRotation(); }" 208168 . 208205) (symbol "FQuat" 208209 . 208214) (symbol "GetActorQuat" 208215 . 208227) (semantic-list "()" 208227 . 208229) (CONST "const" 208230 . 208235) (semantic-list "{ return Super::GetActorQuat(); }" 208236 . 208269) (symbol "FVector" 208273 . 208280) (symbol "GetActorScale" 208281 . 208294) (semantic-list "()" 208294 . 208296) (CONST "const" 208297 . 208302) (semantic-list "{ return Super::GetActorScale(); }" 208303 . 208337) (BOOL "bool" 208341 . 208345) (symbol "SetActorTransform" 208346 . 208363) (semantic-list "(const FTransform& NewTransform, bool bSweep=false, FHitResult* OutSweepHitResult=nullptr, ETeleportType Teleport = ETeleportType::None)" 208363 . 208499) (semantic-list "{ return Super::SetActorTransform(NewTransform, bSweep, OutSweepHitResult, Teleport); }" 208500 . 208587) (BOOL "bool" 208591 . 208595) (symbol "SetActorLocation" 208596 . 208612) (semantic-list "(const FVector& NewLocation, bool bSweep=false, FHitResult* OutSweepHitResult=nullptr, ETeleportType Teleport = ETeleportType::None)" 208612 . 208744) (semantic-list "{ return Super::SetActorLocation(NewLocation, bSweep, OutSweepHitResult, Teleport); }" 208745 . 208830) (BOOL "bool" 208834 . 208838) (symbol "SetActorRotation" 208839 . 208855) (semantic-list "(FRotator NewRotation, ETeleportType Teleport = ETeleportType::None)" 208855 . 208923) (semantic-list "{ return Super::SetActorRotation(NewRotation, Teleport); }" 208924 . 208982) (BOOL "bool" 208986 . 208990) (symbol "SetActorRotation" 208991 . 209007) (semantic-list "(const FQuat& NewRotation, ETeleportType Teleport = ETeleportType::None)" 209007 . 209079) (semantic-list "{ return Super::SetActorRotation(NewRotation, Teleport); }" 209080 . 209138) (BOOL "bool" 209142 . 209146) (symbol "SetActorLocationAndRotation" 209147 . 209174) (semantic-list "(FVector NewLocation, FRotator NewRotation, bool bSweep=false, FHitResult* OutSweepHitResult=nullptr, ETeleportType Teleport = ETeleportType::None)" 209174 . 209321) (semantic-list "{ return Super::SetActorLocationAndRotation(NewLocation, NewRotation, bSweep, OutSweepHitResult, Teleport); }" 209322 . 209431) (BOOL "bool" 209435 . 209439) (symbol "SetActorLocationAndRotation" 209440 . 209467) (semantic-list "(FVector NewLocation, const FQuat& NewRotation, bool bSweep=false, FHitResult* OutSweepHitResult=nullptr, ETeleportType Teleport = ETeleportType::None)" 209467 . 209618) (semantic-list "{ return Super::SetActorLocationAndRotation(NewLocation, NewRotation, bSweep, OutSweepHitResult, Teleport); }" 209619 . 209728) (VIRTUAL "virtual" 209732 . 209739) (BOOL "bool" 209740 . 209744) (symbol "TeleportTo" 209745 . 209755) (semantic-list "( const FVector& DestLocation, const FRotator& DestRotation, bool bIsATest, bool bNoCheck )" 209755 . 209846) (symbol "override" 209847 . 209855) (semantic-list "{ return Super::TeleportTo(DestLocation, DestRotation, bIsATest, bNoCheck); }" 209856 . 209933) (VIRTUAL "virtual" 209937 . 209944) (symbol "FVector" 209945 . 209952) (symbol "GetVelocity" 209953 . 209964) (semantic-list "()" 209964 . 209966) (CONST "const" 209967 . 209972) (symbol "override" 209973 . 209981) (semantic-list "{ return Super::GetVelocity(); }" 209982 . 210014) (FLOAT "float" 210018 . 210023) (symbol "GetHorizontalDistanceTo" 210024 . 210047) (semantic-list "(AActor* OtherActor)" 210047 . 210067) (semantic-list "{ return Super::GetHorizontalDistanceTo(OtherActor); }" 210069 . 210123) (FLOAT "float" 210127 . 210132) (symbol "GetVerticalDistanceTo" 210133 . 210154) (semantic-list "(AActor* OtherActor)" 210154 . 210174) (semantic-list "{ return Super::GetVerticalDistanceTo(OtherActor); }" 210176 . 210228) (FLOAT "float" 210232 . 210237) (symbol "GetDotProductTo" 210238 . 210253) (semantic-list "(AActor* OtherActor)" 210253 . 210273) (semantic-list "{ return Super::GetDotProductTo(OtherActor); }" 210274 . 210320) (FLOAT "float" 210324 . 210329) (symbol "GetHorizontalDotProductTo" 210330 . 210355) (semantic-list "(AActor* OtherActor)" 210355 . 210375) (semantic-list "{ return Super::GetHorizontalDotProductTo(OtherActor); }" 210376 . 210432) (FLOAT "float" 210436 . 210441) (symbol "GetDistanceTo" 210442 . 210455) (semantic-list "(AActor* OtherActor)" 210455 . 210475) (semantic-list "{ return Super::GetDistanceTo(OtherActor); }" 210476 . 210520) (FLOAT "float" 210524 . 210529) (symbol "GetSquaredDistanceTo" 210530 . 210550) (semantic-list "(const AActor* OtherActor)" 210550 . 210576) (semantic-list "{ return Super::GetSquaredDistanceTo(OtherActor); }" 210577 . 210628) (symbol "FVector" 210632 . 210639) (symbol "GetActorForwardVector" 210640 . 210661) (semantic-list "()" 210661 . 210663) (CONST "const" 210664 . 210669) (semantic-list "{ return Super::GetActorForwardVector(); }" 210670 . 210712) (symbol "FVector" 210716 . 210723) (symbol "GetActorUpVector" 210724 . 210740) (semantic-list "()" 210740 . 210742) (CONST "const" 210743 . 210748) (semantic-list "{ return Super::GetActorUpVector(); }" 210749 . 210786) (symbol "FVector" 210790 . 210797) (symbol "GetActorRightVector" 210798 . 210817) (semantic-list "()" 210817 . 210819) (CONST "const" 210820 . 210825) (semantic-list "{ return Super::GetActorRightVector(); }" 210826 . 210866) (VOID "void" 210870 . 210874) (symbol "GetActorBounds" 210875 . 210889) (semantic-list "(bool bOnlyCollidingComponents, FVector& Origin, FVector& BoxExtent, bool bIncludeFromChildActors = false)" 210889 . 210995) (CONST "const" 210996 . 211001) (semantic-list "{ return Super::GetActorBounds(bOnlyCollidingComponents, Origin, BoxExtent, bIncludeFromChildActors); }" 211002 . 211105) (VOID "void" 211109 . 211113) (symbol "SetActorScale3D" 211114 . 211129) (semantic-list "(FVector NewScale3D)" 211129 . 211149) (semantic-list "{ Super::SetActorScale3D(NewScale3D); }" 211150 . 211189) (symbol "FVector" 211193 . 211200) (symbol "GetActorScale3D" 211201 . 211216) (semantic-list "()" 211216 . 211218) (CONST "const" 211219 . 211224) (semantic-list "{ return Super::GetActorScale3D(); }" 211225 . 211261) (VOID "void" 211265 . 211269) (symbol "SetActorRelativeScale3D" 211270 . 211293) (semantic-list "(FVector NewRelativeScale)" 211293 . 211319) (semantic-list "{ Super::SetActorRelativeScale3D(NewRelativeScale); }" 211320 . 211373) (symbol "FVector" 211377 . 211384) (symbol "GetActorRelativeScale3D" 211385 . 211408) (semantic-list "()" 211408 . 211410) (CONST "const" 211411 . 211416) (semantic-list "{ return Super::GetActorRelativeScale3D(); }" 211417 . 211461) (symbol "FTransform" 211465 . 211475) (symbol "ActorToWorld" 211476 . 211488) (semantic-list "()" 211488 . 211490) (CONST "const" 211491 . 211496) (semantic-list "{ return Super::ActorToWorld(); }" 211497 . 211530) (VOID "void" 211534 . 211538) (symbol "AddActorWorldOffset" 211539 . 211558) (semantic-list "(FVector DeltaLocation, bool bSweep=false, FHitResult* OutSweepHitResult=nullptr, ETeleportType Teleport = ETeleportType::None)" 211558 . 211685) (semantic-list "{ Super::AddActorWorldOffset(DeltaLocation, bSweep, OutSweepHitResult, Teleport); }" 211686 . 211769) (VOID "void" 211773 . 211777) (symbol "AddActorWorldRotation" 211778 . 211799) (semantic-list "(FRotator DeltaRotation, bool bSweep=false, FHitResult* OutSweepHitResult=nullptr, ETeleportType Teleport = ETeleportType::None)" 211799 . 211927) (semantic-list "{ Super::AddActorWorldRotation(DeltaRotation, bSweep, OutSweepHitResult, Teleport); }" 211928 . 212013) (VOID "void" 212017 . 212021) (symbol "AddActorWorldRotation" 212022 . 212043) (semantic-list "(const FQuat& DeltaRotation, bool bSweep=false, FHitResult* OutSweepHitResult=nullptr, ETeleportType Teleport = ETeleportType::None)" 212043 . 212175) (semantic-list "{ Super::AddActorWorldRotation(DeltaRotation, bSweep, OutSweepHitResult, Teleport); }" 212176 . 212261) (VOID "void" 212265 . 212269) (symbol "AddActorWorldTransform" 212270 . 212292) (semantic-list "(const FTransform& DeltaTransform, bool bSweep=false, FHitResult* OutSweepHitResult=nullptr, ETeleportType Teleport = ETeleportType::None)" 212292 . 212430) (semantic-list "{ Super::AddActorWorldTransform(DeltaTransform, bSweep, OutSweepHitResult, Teleport); }" 212431 . 212518) (VOID "void" 212522 . 212526) (symbol "AddActorLocalOffset" 212527 . 212546) (semantic-list "(FVector DeltaLocation, bool bSweep=false, FHitResult* OutSweepHitResult=nullptr, ETeleportType Teleport = ETeleportType::None)" 212546 . 212673) (semantic-list "{ Super::AddActorLocalOffset(DeltaLocation, bSweep, OutSweepHitResult, Teleport); }" 212674 . 212757) (VOID "void" 212761 . 212765) (symbol "AddActorLocalRotation" 212766 . 212787) (semantic-list "(FRotator DeltaRotation, bool bSweep=false, FHitResult* OutSweepHitResult=nullptr, ETeleportType Teleport = ETeleportType::None)" 212787 . 212915) (semantic-list "{ Super::AddActorLocalRotation(DeltaRotation, bSweep, OutSweepHitResult, Teleport); }" 212916 . 213001) (VOID "void" 213005 . 213009) (symbol "AddActorLocalRotation" 213010 . 213031) (semantic-list "(const FQuat& DeltaRotation, bool bSweep=false, FHitResult* OutSweepHitResult=nullptr, ETeleportType Teleport = ETeleportType::None)" 213031 . 213163) (semantic-list "{ Super::AddActorLocalRotation(DeltaRotation, bSweep, OutSweepHitResult, Teleport); }" 213164 . 213249) (VOID "void" 213253 . 213257) (symbol "AddActorLocalTransform" 213258 . 213280) (semantic-list "(const FTransform& NewTransform, bool bSweep=false, FHitResult* OutSweepHitResult=nullptr, ETeleportType Teleport = ETeleportType::None)" 213280 . 213416) (semantic-list "{ Super::AddActorLocalTransform(NewTransform, bSweep, OutSweepHitResult, Teleport); }" 213417 . 213502) (VOID "void" 213506 . 213510) (symbol "SetActorRelativeLocation" 213511 . 213535) (semantic-list "(FVector NewRelativeLocation, bool bSweep=false, FHitResult* OutSweepHitResult=nullptr, ETeleportType Teleport = ETeleportType::None)" 213535 . 213668) (semantic-list "{ Super::SetActorRelativeLocation(NewRelativeLocation, bSweep, OutSweepHitResult, Teleport); }" 213669 . 213763) (VOID "void" 213767 . 213771) (symbol "SetActorRelativeRotation" 213772 . 213796) (semantic-list "(FRotator NewRelativeRotation, bool bSweep=false, FHitResult* OutSweepHitResult=nullptr, ETeleportType Teleport = ETeleportType::None)" 213796 . 213930) (semantic-list "{ Super::SetActorRelativeRotation(NewRelativeRotation, bSweep, OutSweepHitResult, Teleport); }" 213931 . 214025) (VOID "void" 214029 . 214033) (symbol "SetActorRelativeRotation" 214034 . 214058) (semantic-list "(const FQuat& NewRelativeRotation, bool bSweep=false, FHitResult* OutSweepHitResult=nullptr, ETeleportType Teleport = ETeleportType::None)" 214058 . 214196) (semantic-list "{ Super::SetActorRelativeRotation(NewRelativeRotation, bSweep, OutSweepHitResult, Teleport); }" 214197 . 214291) (VOID "void" 214295 . 214299) (symbol "SetActorRelativeTransform" 214300 . 214325) (semantic-list "(const FTransform& NewRelativeTransform, bool bSweep=false, FHitResult* OutSweepHitResult=nullptr, ETeleportType Teleport = ETeleportType::None)" 214325 . 214469) (semantic-list "{ Super::SetActorRelativeTransform(NewRelativeTransform, bSweep, OutSweepHitResult, Teleport); }" 214470 . 214566)))
+          ("ACTOR_HAS_LABELS" . ((semantic-list "(UE_BUILD_DEBUG || UE_BUILD_DEVELOPMENT || WITH_PROFILEGPU)" 1534 . 1593)))
+          )
+))
+  :file "!drive_c!Users!hecto!Documents!GitHub!UnrealEngine!Engine!Source!Runtime!Engine!Classes!GameFramework!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

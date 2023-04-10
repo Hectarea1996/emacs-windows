@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Implementable event
+# key: ufn
+# condition: (ue--yas-can-expand-p)
+# --
+/**
+ * @brief
+ */
+UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category="`(file-name-base)`")
+void $0MyFunction();

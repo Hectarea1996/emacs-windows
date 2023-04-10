@@ -8,7 +8,7 @@
  '(custom-safe-themes
    '("dde643b0efb339c0de5645a2bc2e8b4176976d5298065b8e6ca45bc4ddf188b7" "3199be8536de4a8300eaf9ce6d864a35aa802088c0925e944e2b74a574c68fd0" "a0415d8fc6aeec455376f0cbcc1bee5f8c408295d1c2b9a1336db6947b89dd98" default))
  '(package-selected-packages
-   '(company-lsp vscode-dark-plus-theme flycheck-clang-tidy yasnippet treemacs-projectile treemacs clang-format+ company ue lsp-ivy lsp-ui lsp-mode all-the-icons-ivy-rich dired-hide-dotfiles all-the-icons-dired all-the-icons exwm dirtrack ivy slime avy markdown-mode flycheck-pkg-config undo-tree ivy-xref dumb-jump flycheck modern-cpp-font-lock auto-complete pdf-continuous-scroll-mode pdf-tools paredit parinfer-rust multiple-cursors cmake-mode which-key use-package spacemacs-theme solo-jazz-theme solarized-theme rainbow-delimiters projectile parinfer-rust-mode one-themes modus-themes ivy-rich helpful doom-themes doom-modeline counsel))
+   '(emr srefactor company-lsp vscode-dark-plus-theme flycheck-clang-tidy yasnippet treemacs-projectile treemacs clang-format+ company ue lsp-ivy lsp-ui lsp-mode all-the-icons-ivy-rich dired-hide-dotfiles all-the-icons-dired all-the-icons exwm dirtrack ivy slime avy markdown-mode flycheck-pkg-config undo-tree ivy-xref dumb-jump flycheck modern-cpp-font-lock auto-complete pdf-continuous-scroll-mode pdf-tools paredit parinfer-rust multiple-cursors cmake-mode which-key use-package spacemacs-theme solo-jazz-theme solarized-theme rainbow-delimiters projectile parinfer-rust-mode one-themes modus-themes ivy-rich helpful doom-themes doom-modeline counsel))
  '(undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo-tree-history/"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -308,7 +308,6 @@
   :config
   (yas-global-mode 1)
   (yas-reload-all)
-  (push "~/.emacs.d/snippets/" yas/snippet-dirs)
   :bind (:map yas-minor-mode-map
               ("<tab>" . nil)
               ("TAB" . nil)
@@ -454,6 +453,20 @@
   (setq company-selection-wrap-around t)
   (setq company-minimum-prefix-length 2)
   (setq company-transformers '(company-sort-prefer-same-case-prefix)))
+
+
+;; ------ semantic refactor ------
+(use-package srefactor
+  :hook ((c++-mode . semantic-mode)
+		 (c-mode . semantic-mode))
+  :bind ((:map c++-mode-map ("M-RET" . srefactor-refactor-at-point))
+		 (:map c-mode-map ("M-RET" . srefactor-refactor-at-point))))
+
+
+;; ------ emacs-refactor ------
+;; (use-package emr
+;;   :config
+;;   (define-key prog-mode-map (kbd "M-RET") 'emr-show-refactor-menu))
 
 
 ;; ------ treemacs ------

@@ -1,0 +1,219 @@
+;; Object semanticdb-project-database-file-66f733ee2c
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-66f733ee2c"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-66f733ee6c"
+      :major-mode c++-mode
+      :tags 
+        '( ("CoreMinimal.h" include nil nil [276 300])
+            ("UObject/Script.h" include nil nil [301 328])
+            ("UObject/ObjectMacros.h" include nil nil [329 362])
+            ("UObject/UObjectBaseUtility.h" include nil nil [363 402])
+            ("UObject/ObjectCompileContext.h" include nil nil [403 444])
+            ("ProfilingDebugging/ResourceSize.h" include nil nil [445 489])
+            ("UObject/PrimaryAssetId.h" include nil nil [490 525])
+            ("Containers/VersePathFwd.h" include nil nil [526 562])
+            ("FAssetData" type
+               (:prototype t
+                :type "struct")
+                nil [564 582])
+            ("FConfigCacheIni" type
+               (:prototype t
+                :type "class")
+                nil [583 605])
+            ("FCustomPropertyConditionState" type
+               (:prototype t
+                :type "class")
+                nil [606 642])
+            ("FEditPropertyChain" type
+               (:prototype t
+                :type "class")
+                nil [643 668])
+            ("FObjectPostSaveContext" type
+               (:prototype t
+                :type "class")
+                nil [669 698])
+            ("FObjectPostSaveRootContext" type
+               (:prototype t
+                :type "class")
+                nil [699 732])
+            ("FObjectPreSaveContext" type
+               (:prototype t
+                :type "class")
+                nil [733 761])
+            ("FObjectPreSaveRootContext" type
+               (:prototype t
+                :type "class")
+                nil [762 794])
+            ("ITargetPlatform" type
+               (:prototype t
+                :type "class")
+                nil [795 817])
+            ("ITransactionObjectAnnotation" type
+               (:prototype t
+                :type "class")
+                nil [818 853])
+            ("FTransactionObjectEvent" type
+               (:prototype t
+                :type "class")
+                nil [854 884])
+            ("FAppendToClassSchemaContext" type
+               (:prototype t
+                :type "struct")
+                nil [885 920])
+            ("FFrame" type
+               (:prototype t
+                :type "struct")
+                nil [921 935])
+            ("FObjectInstancingGraph" type
+               (:prototype t
+                :type "struct")
+                nil [936 966])
+            ("FPropertyChangedChainEvent" type
+               (:prototype t
+                :type "struct")
+                nil [967 1001])
+            ("FTopLevelAssetPath" type
+               (:prototype t
+                :type "struct")
+                nil [1002 1028])
+            ("UClass" type
+               (:prototype t
+                :type "class")
+                nil [1029 1042])
+            ("DECLARE_LOG_CATEGORY_EXTERN" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("" variable (:type ("LogObj" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1287 1294])
+                    ("" variable (:type ("Log" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1295 1299])
+                    ("" variable (:type ("All" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1300 1304]))                  
+                :type "int")
+                nil [1259 1305])
+            ("ECastCheckedType" type
+               (:members 
+                  ( ("Type" type
+                       (:members 
+                          ( ("NullAllowed" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [1489 1501])
+                            ("NullChecked" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [1567 1581]))                          
+                        :type "enum")
+                        (reparse-symbol namespacesubparts) [1421 1582]))                  
+                :type "namespace")
+                nil [1391 1584])
+            ("UObjectBaseUtility" variable (:type "int") nil [1965 71408])
+            ("FObjectNetPushIdHelper" type
+               (:members 
+                  ( ("private" label nil (reparse-symbol classsubparts) [71442 71450])
+                    ("FNetPrivatePushIdHelper" type
+                       (:prototype t
+                        :type "struct")
+                        (reparse-symbol classsubparts) [71459 71490])
+                    ("FNetObjectManagerPushIdHelper" type
+                       (:prototype t
+                        :type "struct")
+                        (reparse-symbol classsubparts) [71499 71536])
+                    ("SetNetPushIdDynamic" function
+                       (:typemodifiers ("static")
+                        :arguments 
+                          ( ("Object" variable
+                               (:pointer 1
+                                :type ("UObject" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [71677 71693])
+                            ("NewNetPushId" variable
+                               (:constant-flag t
+                                :type ("uint64" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [71694 71720]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [71645 71771]))                  
+                :type "struct")
+                nil [71410 71774])
+            ("FInternalUObjectBaseUtilityIsValidFlagsChecker" type
+               (:members 
+                  ( ("CheckObjectValidBasedOnItsFlags" function
+                       (:typemodifiers ("static")
+                        :arguments 
+                          ( ("Test" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("UObject" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [71889 71909]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [71845 72358]))                  
+                :type "struct")
+                nil [71776 72361])
+            ("IsValid" function
+               (:arguments 
+                  ( ("Test" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("UObject" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [72895 72915]))                  
+                :type "bool")
+                nil [72882 73022])
+            ("IsValidChecked" function
+               (:arguments 
+                  ( ("Test" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("UObject" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [73267 73287]))                  
+                :type "bool")
+                nil [73247 73400])
+            ("GetValid" function
+               (:template 
+                  ( ("T" type (:type "class") nil nil))                  
+                :type ("T" type (:type "class") nil nil)
+                :arguments 
+                  ( ("Test" variable
+                       (:pointer 1
+                        :type ("T" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [73670 73678]))                  
+                :pointer 1)
+                nil [73636 73829])
+            ("GetValid" function
+               (:template 
+                  ( ("T" type (:type "class") nil nil))                  
+                :type ("T" type (:type "class") nil nil)
+                :arguments 
+                  ( ("Test" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("T" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [74105 74119]))                  
+                :constant-flag t
+                :pointer 1)
+                nil [74065 74270]))          
+      :file "Object.h"
+      :pointmax 74501
+      :fsize 76309
+      :lastmodtime '(25508 18264 0 0)
+      :unmatched-syntax '((symbol 73235 . 73246) (symbol 72870 . 72881) (symbol 71833 . 71844) (FRIEND 71492 . 71498) (FRIEND 71452 . 71458) (PUBLIC 1958 . 1964) (punctuation 1956 . 1957) (symbol 1948 . 1955) (symbol 1932 . 1947) (CLASS 1926 . 1931) (punctuation 1584 . 1585) (symbol 61 . 65) (symbol 54 . 60) (punctuation 53 . 54) (PUBLIC 1958 . 1964) (punctuation 1956 . 1957) (symbol 1948 . 1955) (symbol 1932 . 1947) (CLASS 1926 . 1931) (punctuation 1584 . 1585) (symbol 61 . 65) (symbol 54 . 60) (punctuation 53 . 54) (symbol 71833 . 71844) (FRIEND 71492 . 71498) (FRIEND 71452 . 71458) (PUBLIC 1958 . 1964) (punctuation 1956 . 1957) (symbol 1948 . 1955) (symbol 1932 . 1947) (CLASS 1926 . 1931) (punctuation 1584 . 1585) (symbol 61 . 65) (symbol 54 . 60) (punctuation 53 . 54)))
+    (semanticdb-table "semanticdb-table-66f90fc790"
+      :file "Script.h"
+      :fsize 26664
+      :lastmodtime '(25508 18264 0 0))
+    (semanticdb-table "semanticdb-table-66f90fc808"
+      :file "ObjectMacros.h"
+      :fsize 116905
+      :lastmodtime '(25508 18264 0 0))
+    (semanticdb-table "semanticdb-table-66f90fbc84"
+      :file "UObjectBaseUtility.h"
+      :fsize 39486
+      :lastmodtime '(25508 18264 0 0))
+    (semanticdb-table "semanticdb-table-66f90fbcfc"
+      :file "ObjectCompileContext.h"
+      :fsize 403
+      :lastmodtime '(25508 18264 0 0))
+    (semanticdb-table "semanticdb-table-66f90fbd8c"
+      :file "PrimaryAssetId.h"
+      :fsize 6501
+      :lastmodtime '(25508 18264 0 0)))
+  :file "!drive_c!Users!hecto!Documents!GitHub!UnrealEngine!Engine!Source!Runtime!CoreUObject!Public!UObject!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

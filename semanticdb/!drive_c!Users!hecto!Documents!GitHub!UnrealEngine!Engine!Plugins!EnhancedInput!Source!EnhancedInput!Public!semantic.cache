@@ -1,0 +1,393 @@
+;; Object semanticdb-project-database-file-66f72d5708
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-66f72d5708"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-66f72d5748"
+      :major-mode c++-mode
+      :tags 
+        '( ("CoreMinimal.h" include nil nil [67 91])
+            ("InputActionValue.h" include nil nil [92 121])
+            ("InputModifiers.generated.h" include nil nil [122 159])
+            ("UEnhancedPlayerInput" type
+               (:prototype t
+                :type "class")
+                nil [161 188])
+            ("UObject" variable (:type "int") nil [404 2301])
+            ("EDeadZoneType" type
+               (:superclasses 
+                  ( ("uint8" type
+                       (:protection "unspecified"
+                        :type "class")
+                        nil nil))                  
+                :type "class")
+                nil [2316 2693])
+            ("UInputModifierDeadZone" type
+               (:superclasses 
+                  ( ("UInputModifier" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [3007 3014])
+                    ("LowerThreshold" variable
+                       (:default-value "0.2f"
+                        :type "float")
+                        (reparse-symbol classsubparts) [3136 3164])
+                    ("UpperThreshold" variable
+                       (:default-value "1.f"
+                        :type "float")
+                        (reparse-symbol classsubparts) [3291 3318])
+                    ("EDeadZoneType::Radial" variable (:type "int") (reparse-symbol classsubparts) [3418 3440])
+                    ("protected" label nil (reparse-symbol classsubparts) [3442 3452])
+                    ("override" variable (:type "int") (reparse-symbol classsubparts) [3595 3604])
+                    ("override" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol classsubparts) [3957 3972]))                  
+                :type "class")
+                nil [2933 3975])
+            ("UInputModifierScalar" type
+               (:superclasses 
+                  ( ("UInputModifier" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [4176 4183])
+                    ("FVector::OneVector" variable (:type "int") (reparse-symbol classsubparts) [4512 4531])
+                    ("protected" label nil (reparse-symbol classsubparts) [4533 4543])
+                    ("override" variable (:type "int") (reparse-symbol classsubparts) [4686 4695]))                  
+                :type "class")
+                nil [4104 4698])
+            ("UInputModifierScaleByDeltaTime" type
+               (:superclasses 
+                  ( ("UInputModifier" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("protected" label nil (reparse-symbol classsubparts) [4937 4947])
+                    ("override" variable (:type "int") (reparse-symbol classsubparts) [5090 5099]))                  
+                :type "class")
+                nil [4854 5102])
+            ("UInputModifierNegate" type
+               (:superclasses 
+                  ( ("UInputModifier" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [5288 5295])
+                    ("bX" variable
+                       (:default-value "true"
+                        :type "bool")
+                        (reparse-symbol classsubparts) [5368 5383])
+                    ("bY" variable
+                       (:default-value "true"
+                        :type "bool")
+                        (reparse-symbol classsubparts) [5455 5470])
+                    ("bZ" variable
+                       (:default-value "true"
+                        :type "bool")
+                        (reparse-symbol classsubparts) [5542 5557])
+                    ("protected" label nil (reparse-symbol classsubparts) [5559 5569])
+                    ("override" variable (:type "int") (reparse-symbol classsubparts) [5712 5721])
+                    ("override" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol classsubparts) [5842 5857]))                  
+                :type "class")
+                nil [5216 5860])
+            ("UInputModifierSmooth" type
+               (:superclasses 
+                  ( ("UInputModifier" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("ClearSmoothedAxis" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [6063 6088])
+                    ("protected" label nil (reparse-symbol classsubparts) [6090 6100])
+                    ("ZeroTime" variable
+                       (:default-value "0.f"
+                        :type "float")
+                        (reparse-symbol classsubparts) [6236 6257])
+                    ("AverageValue" variable (:type ("FInputActionValue" type (:type "class") nil nil)) (reparse-symbol classsubparts) [6297 6328])
+                    ("Samples" variable
+                       (:default-value "0"
+                        :type ("int32" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [6384 6402])
+                    ("SMOOTH_TOTAL_SAMPLE_TIME_DEFAULT" variable (:constant-flag t) (reparse-symbol classsubparts) [6412 6444])
+                    ("TotalSampleTime" variable
+                       (:default-value "SMOOTH_TOTAL_SAMPLE_TIME_DEFAULT"
+                        :type "float")
+                        (reparse-symbol classsubparts) [6491 6548])
+                    ("override" variable (:type "int") (reparse-symbol classsubparts) [6692 6701]))                  
+                :type "class")
+                nil [5990 6704])
+            ("UInputModifierResponseCurveExponential" type
+               (:superclasses 
+                  ( ("UInputModifier" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [6995 7002])
+                    ("FVector::OneVector" variable (:type "int") (reparse-symbol classsubparts) [7107 7126])
+                    ("protected" label nil (reparse-symbol classsubparts) [7128 7138])
+                    ("override" variable (:type "int") (reparse-symbol classsubparts) [7281 7290]))                  
+                :type "class")
+                nil [6905 7293])
+            ("UCurveFloat" type
+               (:prototype t
+                :type "class")
+                nil [7295 7313])
+            ("UInputModifierResponseCurveUser" type
+               (:superclasses 
+                  ( ("UInputModifier" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [7587 7594])
+                    ("ResponseX" variable (:type ("TObjectPtr" type
+                         (:template-specifier 
+                            ( ("UCurveFloat" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [7704 7738])
+                    ("ResponseY" variable (:type ("TObjectPtr" type
+                         (:template-specifier 
+                            ( ("UCurveFloat" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [7847 7881])
+                    ("ResponseZ" variable (:type ("TObjectPtr" type
+                         (:template-specifier 
+                            ( ("UCurveFloat" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [7990 8024])
+                    ("protected" label nil (reparse-symbol classsubparts) [8026 8036])
+                    ("override" variable (:type "int") (reparse-symbol classsubparts) [8179 8188]))                  
+                :type "class")
+                nil [7504 8191])
+            ("EFOVScalingType" type
+               (:superclasses 
+                  ( ("uint8" type
+                       (:protection "unspecified"
+                        :type "class")
+                        nil nil))                  
+                :type "class")
+                nil [8206 8556])
+            ("UInputModifierFOVScaling" type
+               (:superclasses 
+                  ( ("UInputModifier" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [8786 8793])
+                    ("FOVScale" variable
+                       (:default-value "1.f"
+                        :type "float")
+                        (reparse-symbol classsubparts) [8928 8949])
+                    ("EFOVScalingType::Standard" variable (:type "int") (reparse-symbol classsubparts) [9063 9089])
+                    ("protected" label nil (reparse-symbol classsubparts) [9127 9137])
+                    ("override" variable (:type "int") (reparse-symbol classsubparts) [9280 9289]))                  
+                :type "class")
+                nil [8710 9292])
+            ("UInputModifierToWorldSpace" type
+               (:superclasses 
+                  ( ("UInputModifier" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("protected" label nil (reparse-symbol classsubparts) [9775 9785])
+                    ("override" variable (:type "int") (reparse-symbol classsubparts) [9928 9937])
+                    ("override" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol classsubparts) [10058 10073]))                  
+                :type "class")
+                nil [9697 10076])
+            ("EInputAxisSwizzle" type
+               (:superclasses 
+                  ( ("uint8" type
+                       (:protection "unspecified"
+                        :type "class")
+                        nil nil))                  
+                :type "class")
+                nil [10092 10348])
+            ("UInputModifierSwizzleAxis" type
+               (:superclasses 
+                  ( ("UInputModifier" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [10627 10634])
+                    ("EInputAxisSwizzle::YXZ" variable (:type "int") (reparse-symbol classsubparts) [10797 10820])
+                    ("protected" label nil (reparse-symbol classsubparts) [10822 10832])
+                    ("override" variable (:type "int") (reparse-symbol classsubparts) [10975 10984])
+                    ("override" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol classsubparts) [11105 11120]))                  
+                :type "class")
+                nil [10550 11123]))          
+      :file "InputModifiers.h"
+      :pointmax 11123
+      :fsize 11425
+      :lastmodtime '(25508 18249 0 0)
+      :unmatched-syntax '((semantic-list 11043 . 11104) (symbol 11007 . 11043) (symbol 10994 . 11006) (VIRTUAL 10986 . 10993) (semantic-list 10884 . 10974) (symbol 10860 . 10884) (symbol 10842 . 10859) (VIRTUAL 10834 . 10841) (punctuation 10795 . 10796) (symbol 10789 . 10794) (symbol 10771 . 10788) (semantic-list 10714 . 10769) (symbol 10705 . 10714) (semantic-list 10623 . 10625) (symbol 10609 . 10623) (semantic-list 10467 . 10549) (symbol 10461 . 10467) (semantic-list 11043 . 11104) (symbol 11007 . 11043) (symbol 10994 . 11006) (VIRTUAL 10986 . 10993) (semantic-list 10884 . 10974) (symbol 10860 . 10884) (symbol 10842 . 10859) (VIRTUAL 10834 . 10841) (punctuation 10795 . 10796) (symbol 10789 . 10794) (symbol 10771 . 10788) (semantic-list 10714 . 10769) (symbol 10705 . 10714) (semantic-list 10623 . 10625) (symbol 10609 . 10623) (semantic-list 11043 . 11104) (symbol 11007 . 11043) (symbol 10994 . 11006) (VIRTUAL 10986 . 10993) (semantic-list 10884 . 10974) (symbol 10860 . 10884) (symbol 10842 . 10859) (VIRTUAL 10834 . 10841) (punctuation 10795 . 10796) (symbol 10789 . 10794) (symbol 10771 . 10788) (semantic-list 10714 . 10769) (symbol 10705 . 10714) (semantic-list 10623 . 10625) (symbol 10609 . 10623) (punctuation 10344 . 10345) (symbol 10341 . 10344) (punctuation 10307 . 10308) (symbol 10304 . 10307) (punctuation 10270 . 10271) (symbol 10267 . 10270) (punctuation 10241 . 10242) (symbol 10238 . 10241) (punctuation 10212 . 10213) (symbol 10209 . 10212) (ENUM 10087 . 10091) (semantic-list 10084 . 10086) (symbol 10079 . 10084) (semantic-list 9996 . 10057) (symbol 9960 . 9996) (symbol 9947 . 9959) (VIRTUAL 9939 . 9946) (semantic-list 9837 . 9927) (symbol 9813 . 9837) (symbol 9795 . 9812) (VIRTUAL 9787 . 9794) (semantic-list 9771 . 9773) (symbol 9757 . 9771) (semantic-list 9625 . 9696) (symbol 9619 . 9625) (semantic-list 9996 . 10057) (symbol 9960 . 9996) (symbol 9947 . 9959) (VIRTUAL 9939 . 9946) (semantic-list 9837 . 9927) (symbol 9813 . 9837) (symbol 9795 . 9812) (VIRTUAL 9787 . 9794) (semantic-list 9771 . 9773) (symbol 9757 . 9771) (semantic-list 9996 . 10057) (symbol 9960 . 9996) (symbol 9947 . 9959) (VIRTUAL 9939 . 9946) (semantic-list 9837 . 9927) (symbol 9813 . 9837) (symbol 9795 . 9812) (VIRTUAL 9787 . 9794) (semantic-list 9771 . 9773) (symbol 9757 . 9771) (semantic-list 9189 . 9279) (symbol 9165 . 9189) (symbol 9147 . 9164) (VIRTUAL 9139 . 9146) (punctuation 9061 . 9062) (symbol 9046 . 9060) (symbol 9030 . 9045) (semantic-list 8961 . 9028) (symbol 8952 . 8961) (semantic-list 8859 . 8926) (symbol 8850 . 8859) (semantic-list 8782 . 8784) (symbol 8768 . 8782) (semantic-list 8641 . 8709) (symbol 8635 . 8641) (semantic-list 9189 . 9279) (symbol 9165 . 9189) (symbol 9147 . 9164) (VIRTUAL 9139 . 9146) (punctuation 9061 . 9062) (symbol 9046 . 9060) (symbol 9030 . 9045) (semantic-list 8961 . 9028) (symbol 8952 . 8961) (semantic-list 8859 . 8926) (symbol 8850 . 8859) (semantic-list 8782 . 8784) (symbol 8768 . 8782) (semantic-list 9189 . 9279) (symbol 9165 . 9189) (symbol 9147 . 9164) (VIRTUAL 9139 . 9146) (punctuation 9061 . 9062) (symbol 9046 . 9060) (symbol 9030 . 9045) (semantic-list 8961 . 9028) (symbol 8952 . 8961) (semantic-list 8859 . 8926) (symbol 8850 . 8859) (semantic-list 8782 . 8784) (symbol 8768 . 8782) (punctuation 8552 . 8553) (symbol 8538 . 8552) (punctuation 8346 . 8347) (symbol 8338 . 8346) (ENUM 8201 . 8205) (semantic-list 8198 . 8200) (symbol 8193 . 8198) (semantic-list 8088 . 8178) (symbol 8064 . 8088) (symbol 8046 . 8063) (VIRTUAL 8038 . 8045) (semantic-list 7892 . 7988) (symbol 7883 . 7892) (semantic-list 7749 . 7845) (symbol 7740 . 7749) (semantic-list 7606 . 7702) (symbol 7597 . 7606) (semantic-list 7583 . 7585) (symbol 7569 . 7583) (semantic-list 7417 . 7503) (symbol 7411 . 7417) (semantic-list 8088 . 8178) (symbol 8064 . 8088) (symbol 8046 . 8063) (VIRTUAL 8038 . 8045) (semantic-list 7892 . 7988) (symbol 7883 . 7892) (semantic-list 7749 . 7845) (symbol 7740 . 7749) (semantic-list 7606 . 7702) (symbol 7597 . 7606) (semantic-list 7583 . 7585) (symbol 7569 . 7583) (semantic-list 8088 . 8178) (symbol 8064 . 8088) (symbol 8046 . 8063) (VIRTUAL 8038 . 8045) (semantic-list 7892 . 7988) (symbol 7883 . 7892) (semantic-list 7749 . 7845) (symbol 7740 . 7749) (semantic-list 7606 . 7702) (symbol 7597 . 7606) (semantic-list 7583 . 7585) (symbol 7569 . 7583) (semantic-list 7190 . 7280) (symbol 7166 . 7190) (symbol 7148 . 7165) (VIRTUAL 7140 . 7147) (punctuation 7105 . 7106) (symbol 7091 . 7104) (symbol 7083 . 7090) (semantic-list 7014 . 7081) (symbol 7005 . 7014) (semantic-list 6991 . 6993) (symbol 6977 . 6991) (semantic-list 6819 . 6904) (symbol 6813 . 6819) (semantic-list 7190 . 7280) (symbol 7166 . 7190) (symbol 7148 . 7165) (VIRTUAL 7140 . 7147) (punctuation 7105 . 7106) (symbol 7091 . 7104) (symbol 7083 . 7090) (semantic-list 7014 . 7081) (symbol 7005 . 7014) (semantic-list 6991 . 6993) (symbol 6977 . 6991) (semantic-list 7190 . 7280) (symbol 7166 . 7190) (symbol 7148 . 7165) (VIRTUAL 7140 . 7147) (punctuation 7105 . 7106) (symbol 7091 . 7104) (symbol 7083 . 7090) (semantic-list 7014 . 7081) (symbol 7005 . 7014) (semantic-list 6991 . 6993) (symbol 6977 . 6991) (semantic-list 6601 . 6691) (symbol 6577 . 6601) (symbol 6559 . 6576) (VIRTUAL 6551 . 6558) (semantic-list 6058 . 6060) (symbol 6044 . 6058) (semantic-list 5926 . 5989) (symbol 5920 . 5926) (semantic-list 6601 . 6691) (symbol 6577 . 6601) (symbol 6559 . 6576) (VIRTUAL 6551 . 6558) (semantic-list 6058 . 6060) (symbol 6044 . 6058) (semantic-list 6601 . 6691) (symbol 6577 . 6601) (symbol 6559 . 6576) (VIRTUAL 6551 . 6558) (semantic-list 6058 . 6060) (symbol 6044 . 6058) (semantic-list 5780 . 5841) (symbol 5744 . 5780) (symbol 5731 . 5743) (VIRTUAL 5723 . 5730) (semantic-list 5621 . 5711) (symbol 5597 . 5621) (symbol 5579 . 5596) (VIRTUAL 5571 . 5578) (semantic-list 5481 . 5540) (symbol 5472 . 5481) (semantic-list 5394 . 5453) (symbol 5385 . 5394) (semantic-list 5307 . 5366) (symbol 5298 . 5307) (semantic-list 5284 . 5286) (symbol 5270 . 5284) (semantic-list 5152 . 5215) (symbol 5146 . 5152) (semantic-list 5780 . 5841) (symbol 5744 . 5780) (symbol 5731 . 5743) (VIRTUAL 5723 . 5730) (semantic-list 5621 . 5711) (symbol 5597 . 5621) (symbol 5579 . 5596) (VIRTUAL 5571 . 5578) (semantic-list 5481 . 5540) (symbol 5472 . 5481) (semantic-list 5394 . 5453) (symbol 5385 . 5394) (semantic-list 5307 . 5366) (symbol 5298 . 5307) (semantic-list 5284 . 5286) (symbol 5270 . 5284) (semantic-list 5780 . 5841) (symbol 5744 . 5780) (symbol 5731 . 5743) (VIRTUAL 5723 . 5730) (semantic-list 5621 . 5711) (symbol 5597 . 5621) (symbol 5579 . 5596) (VIRTUAL 5571 . 5578) (semantic-list 5481 . 5540) (symbol 5472 . 5481) (semantic-list 5394 . 5453) (symbol 5385 . 5394) (semantic-list 5307 . 5366) (symbol 5298 . 5307) (semantic-list 5284 . 5286) (symbol 5270 . 5284) (semantic-list 4999 . 5089) (symbol 4975 . 4999) (symbol 4957 . 4974) (VIRTUAL 4949 . 4956) (semantic-list 4932 . 4934) (symbol 4918 . 4932) (semantic-list 4777 . 4853) (symbol 4771 . 4777) (semantic-list 4999 . 5089) (symbol 4975 . 4999) (symbol 4957 . 4974) (VIRTUAL 4949 . 4956) (semantic-list 4932 . 4934) (symbol 4918 . 4932) (semantic-list 4999 . 5089) (symbol 4975 . 4999) (symbol 4957 . 4974) (VIRTUAL 4949 . 4956) (semantic-list 4932 . 4934) (symbol 4918 . 4932) (semantic-list 4595 . 4685) (symbol 4571 . 4595) (symbol 4553 . 4570) (VIRTUAL 4545 . 4552) (punctuation 4510 . 4511) (symbol 4503 . 4509) (symbol 4495 . 4502) (semantic-list 4436 . 4493) (symbol 4427 . 4436) (semantic-list 4172 . 4174) (symbol 4158 . 4172) (semantic-list 4040 . 4103) (symbol 4034 . 4040) (semantic-list 4595 . 4685) (symbol 4571 . 4595) (symbol 4553 . 4570) (VIRTUAL 4545 . 4552) (punctuation 4510 . 4511) (symbol 4503 . 4509) (symbol 4495 . 4502) (semantic-list 4436 . 4493) (symbol 4427 . 4436) (semantic-list 4172 . 4174) (symbol 4158 . 4172) (semantic-list 4595 . 4685) (symbol 4571 . 4595) (symbol 4553 . 4570) (VIRTUAL 4545 . 4552) (punctuation 4510 . 4511) (symbol 4503 . 4509) (symbol 4495 . 4502) (semantic-list 4436 . 4493) (symbol 4427 . 4436) (semantic-list 4172 . 4174) (symbol 4158 . 4172) (semantic-list 3895 . 3956) (symbol 3859 . 3895) (symbol 3846 . 3858) (VIRTUAL 3838 . 3845) (semantic-list 3504 . 3594) (symbol 3480 . 3504) (symbol 3462 . 3479) (VIRTUAL 3454 . 3461) (punctuation 3416 . 3417) (symbol 3411 . 3415) (symbol 3397 . 3410) (semantic-list 3330 . 3395) (symbol 3321 . 3330) (semantic-list 3224 . 3289) (symbol 3215 . 3224) (semantic-list 3069 . 3134) (symbol 3060 . 3069) (semantic-list 3003 . 3005) (symbol 2989 . 3003) (semantic-list 2866 . 2932) (symbol 2860 . 2866) (semantic-list 3895 . 3956) (symbol 3859 . 3895) (symbol 3846 . 3858) (VIRTUAL 3838 . 3845) (semantic-list 3504 . 3594) (symbol 3480 . 3504) (symbol 3462 . 3479) (VIRTUAL 3454 . 3461) (punctuation 3416 . 3417) (symbol 3411 . 3415) (symbol 3397 . 3410) (semantic-list 3330 . 3395) (symbol 3321 . 3330) (semantic-list 3224 . 3289) (symbol 3215 . 3224) (semantic-list 3069 . 3134) (symbol 3060 . 3069) (semantic-list 3003 . 3005) (symbol 2989 . 3003) (semantic-list 3895 . 3956) (symbol 3859 . 3895) (symbol 3846 . 3858) (VIRTUAL 3838 . 3845) (semantic-list 3504 . 3594) (symbol 3480 . 3504) (symbol 3462 . 3479) (VIRTUAL 3454 . 3461) (punctuation 3416 . 3417) (symbol 3411 . 3415) (symbol 3397 . 3410) (semantic-list 3330 . 3395) (symbol 3321 . 3330) (semantic-list 3224 . 3289) (symbol 3215 . 3224) (semantic-list 3069 . 3134) (symbol 3060 . 3069) (semantic-list 3003 . 3005) (symbol 2989 . 3003) (punctuation 2689 . 2690) (symbol 2683 . 2689) (punctuation 2519 . 2520) (symbol 2514 . 2519) (ENUM 2311 . 2315) (semantic-list 2308 . 2310) (symbol 2303 . 2308) (PUBLIC 397 . 403) (punctuation 395 . 396) (symbol 380 . 394) (symbol 362 . 379) (CLASS 356 . 361) (semantic-list 238 . 355) (symbol 232 . 238) (symbol 61 . 65) (symbol 54 . 60) (punctuation 53 . 54))
+      :lexical-table 
+        '(("SMOOTH_TOTAL_SAMPLE_TIME_DEFAULT" . ((semantic-list "(0.0083f)" 6445 . 6454)))
+          )
+)
+    (semanticdb-table "semanticdb-table-66f72dca28"
+      :file "InputActionValue.h"
+      :fsize 6795
+      :lastmodtime '(25508 18249 0 0))
+    (semanticdb-table "semanticdb-table-66f738d7e4"
+      :major-mode c-mode
+      :tags 
+        '( ("CoreMinimal.h" include nil nil [67 91])
+            ("Engine/DataAsset.h" include nil nil [92 121])
+            ("InputActionValue.h" include nil nil [122 151])
+            ("InputMappingQuery.h" include nil nil [152 182])
+            ("InputModifiers.h" include nil nil [183 210])
+            ("InputTriggers.h" include nil nil [211 237])
+            ("InputAction.generated.h" include nil nil [239 273])
+            ("ETriggerEventInternal" type
+               (:prototype t
+                :superclasses 
+                  ( ("uint8" type
+                       (:protection "unspecified"
+                        :type "class")
+                        nil nil))                  
+                :type "class")
+                nil [280 316])
+            ("UDataAsset" variable (:type "int") nil [472 2953])
+            ("FTriggerStateTracker" type
+               (:members 
+                  ( ("EvaluateTriggers" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("PlayerInput" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("UEnhancedPlayerInput" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [3640 3680])
+                            ("Triggers" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("TArray" type
+                                     (:template-specifier 
+                                        ( ("UInputTrigger" type (:pointer 1) nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [3681 3720])
+                            ("ModifiedValue" variable (:type ("FInputActionValue" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3721 3753])
+                            ("DeltaTime" variable (:type "float") (reparse-symbol arg-sub-list) [3754 3770]))                          
+                        :type ("ETriggerState" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [3609 3771])
+                    ("GetState" function
+                       (:prototype-flag t
+                        :methodconst-flag t
+                        :type ("ETriggerState" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [3774 3805])
+                    ("SetMappingTriggerApplied" function
+                       (:arguments 
+                          ( ("bNewVal" variable (:type "bool") (reparse-symbol arg-sub-list) [3838 3851]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [3808 3889])
+                    ("GetMappingTriggerApplied" function
+                       (:methodconst-flag t
+                        :type "bool")
+                        (reparse-symbol classsubparts) [3891 3963])
+                    (">=" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :arguments 
+                          ( ("Other" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("FTriggerStateTracker" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [3982 4016]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [3966 4065])
+                    ("<" function
+                       (:methodconst-flag t
+                        :operator-flag t
+                        :arguments 
+                          ( ("Other" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("FTriggerStateTracker" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [4083 4117]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [4067 4166])
+                    ("SetStateForNoTriggers" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("State" variable (:type ("ETriggerState" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4347 4367]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [4320 4368])
+                    ("private" label nil (reparse-symbol classsubparts) [4370 4378])
+                    ("ETriggerState::None" variable (:type "int") (reparse-symbol classsubparts) [4411 4431])
+                    ("bEvaluatedInput" variable
+                       (:default-value "false"
+                        :type "bool")
+                        (reparse-symbol classsubparts) [4434 4463])
+                    ("bEvaluatedTriggers" variable
+                       (:default-value "false"
+                        :type "bool")
+                        (reparse-symbol classsubparts) [4535 4567])
+                    ("bFoundActiveTrigger" variable
+                       (:default-value "false"
+                        :type "bool")
+                        (reparse-symbol classsubparts) [4613 4646])
+                    ("bAnyExplictTriggered" variable
+                       (:default-value "false"
+                        :type "bool")
+                        (reparse-symbol classsubparts) [4786 4820])
+                    ("bFoundExplicit" variable
+                       (:default-value "false"
+                        :type "bool")
+                        (reparse-symbol classsubparts) [4822 4850])
+                    ("bAllImplicitsTriggered" variable
+                       (:default-value "true"
+                        :type "bool")
+                        (reparse-symbol classsubparts) [4979 5014])
+                    ("bBlocking" variable
+                       (:default-value "false"
+                        :type "bool")
+                        (reparse-symbol classsubparts) [5016 5039])
+                    ("bMappingTriggerApplied" variable
+                       (:default-value "false"
+                        :type "bool")
+                        (reparse-symbol classsubparts) [5090 5126]))                  
+                :type "struct")
+                nil [3077 5203])
+            ("FInputActionInstance" variable (:type ("ENHANCEDINPUT_API" type
+                 (:prototype t
+                  :type "struct")
+                  nil nil)) nil [5314 7974]))          
+      :file "InputAction.h"
+      :pointmax 7974
+      :fsize 8156
+      :lastmodtime '(25508 18249 0 0)
+      :unmatched-syntax '((semantic-list 5298 . 5313) (symbol 5291 . 5298) (punctuation 4409 . 4410) (symbol 4394 . 4408) (symbol 4380 . 4393) (PUBLIC 465 . 471) (punctuation 463 . 464) (symbol 450 . 462) (symbol 432 . 449) (CLASS 426 . 431) (semantic-list 410 . 425) (symbol 404 . 410) (ENUM 275 . 279) (symbol 61 . 65) (symbol 54 . 60) (punctuation 53 . 54)))
+    (semanticdb-table "semanticdb-table-66f6f2b3bc"
+      :file "InputMappingQuery.h"
+      :fsize 3867
+      :lastmodtime '(25508 18249 0 0))
+    (semanticdb-table "semanticdb-table-66f6f2b440"
+      :file "InputTriggers.h"
+      :fsize 19486
+      :lastmodtime '(25508 18249 0 0)))
+  :file "!drive_c!Users!hecto!Documents!GitHub!UnrealEngine!Engine!Plugins!EnhancedInput!Source!EnhancedInput!Public!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

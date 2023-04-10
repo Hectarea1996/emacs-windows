@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Callable function
+# key: ufp
+# condition: (ue--yas-can-expand-p)
+# --
+/**
+ * @brief
+ */
+UFUNCTION(BlueprintCallable, Category="`(file-name-base)`")
+void $0MyFunction();

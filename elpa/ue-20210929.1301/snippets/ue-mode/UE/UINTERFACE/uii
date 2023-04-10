@@ -1,0 +1,25 @@
+# -*- mode: snippet -*-
+# name: Interface declaration
+# key: uii
+# condition: (ue--yas-can-expand-p)
+# --
+/**
+ * @brief
+ */
+UINTERFACE(Blueprintable)
+class `(ue--api-macro-name)` U${1:MyInterface} : public U$2Interface
+{
+
+	GENERATED_BODY()
+
+};
+
+class `(ue--api-macro-name)` I${1:MyInterface} : public I$2Interface
+{
+
+	GENERATED_BODY()
+
+public:
+
+
+};

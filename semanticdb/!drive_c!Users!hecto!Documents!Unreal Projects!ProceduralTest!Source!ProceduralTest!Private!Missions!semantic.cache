@@ -1,0 +1,65 @@
+;; Object semanticdb-project-database-file-66302ba14c
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-66302ba14c"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-662f6b1c74"
+      :major-mode c++-mode
+      :tags 
+        '( ("Missions/Mission.h" include nil nil [2 31])
+            ("UMission" function
+               (:constructor-flag t
+                :parent "UMission"
+                :type ("UMission" type (:type "class") nil nil))
+                nil [33 166])
+            ("GetMissionState" function
+               (:methodconst-flag t
+                :parent "UMission"
+                :type ("EMissionState" type (:type "class") nil nil))
+                nil [168 241])
+            ("GetName" function
+               (:methodconst-flag t
+                :parent "UMission"
+                :type ("FString" type (:type "class") nil nil))
+                nil [243 294])
+            ("SetName" function
+               (:parent "UMission"
+                :arguments 
+                  ( ("InName" variable (:type ("FString" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [319 334]))                  
+                :type "void")
+                nil [296 354])
+            ("GetDescription" function
+               (:methodconst-flag t
+                :parent "UMission"
+                :type ("FString" type (:type "class") nil nil))
+                nil [356 421])
+            ("SetDescription" function
+               (:parent "UMission"
+                :arguments 
+                  ( ("InDescription" variable (:type ("FString" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [453 475]))                  
+                :type "void")
+                nil [423 509])
+            ("Init" function
+               (:parent "UMission"
+                :type "void")
+                nil [511 680])
+            ("Fail" function
+               (:parent "UMission"
+                :type "void")
+                nil [682 850])
+            ("Complete" function
+               (:parent "UMission"
+                :type "void")
+                nil [852 1027])
+            ("Reset" function
+               (:parent "UMission"
+                :type "void")
+                nil [1029 1195]))          
+      :file "Mission.cpp"
+      :pointmax 1196
+      :fsize 1261
+      :lastmodtime '(25651 47739 0 0)
+      :unmatched-syntax nil))
+  :file "!drive_c!Users!hecto!Documents!Unreal Projects!ProceduralTest!Source!ProceduralTest!Private!Missions!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")
