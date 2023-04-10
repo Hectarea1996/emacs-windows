@@ -473,7 +473,10 @@
 (use-package treemacs
   :bind (("C-c t t" . treemacs))
   :config
-  (setq treemacs-width 50))
+  (setq treemacs-width 40)
+  (setq treemacs-position 'right)
+  (treemacs-resize-icons 16)
+  (setq treemacs-text-scale -1))
 
 (use-package treemacs-projectile
   :after (treemacs projectile))

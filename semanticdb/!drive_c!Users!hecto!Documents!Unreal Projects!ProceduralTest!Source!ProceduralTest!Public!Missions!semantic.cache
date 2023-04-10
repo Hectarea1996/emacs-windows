@@ -1,9 +1,9 @@
-;; Object semanticdb-project-database-file-662f5d5e2c
+;; Object semanticdb-project-database-file-8a48033188
 ;; SEMANTICDB Tags save file
-(semanticdb-project-database-file "semanticdb-project-database-file-662f5d5e2c"
+(semanticdb-project-database-file "semanticdb-project-database-file-8a48033188"
   :tables
   (list
-    (semanticdb-table "semanticdb-table-662f5d5e0c"
+    (semanticdb-table "semanticdb-table-8a47ef09fc"
       :major-mode c-mode
       :tags 
         '( ("CoreMinimal.h" include nil nil [15 39])
@@ -27,8 +27,20 @@
             ("UObject" variable (:type "int") nil [582 2505]))          
       :file "Mission.h"
       :pointmax 2506
-      :fsize 2617
-      :lastmodtime '(25651 47675 0 0)
+      :fsize 2629
+      :lastmodtime '(25651 55054 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table-8a4636b910"
+      :major-mode c-mode
+      :tags 
+        '( ("CoreMinimal.h" include nil nil [35 59])
+            ("UObject/Object.h" include nil nil [60 87])
+            ("MissionManager.generated.h" include nil nil [88 125])
+            ("UObject" variable (:type "int") nil [185 246]))          
+      :file "MissionManager.h"
+      :pointmax 247
+      :fsize 265
+      :lastmodtime '(25652 3199 0 0)
       :unmatched-syntax nil))
   :file "!drive_c!Users!hecto!Documents!Unreal Projects!ProceduralTest!Source!ProceduralTest!Public!Missions!semantic.cache"
   :semantic-tag-version "2.0"
