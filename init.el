@@ -342,6 +342,48 @@
 ;; The Unreal Engine path
 (setq unreal-directory "C:/Users/hecto/Documents/GitHub/UnrealEngine/")  ; <- This must end with a slash
 
+
+;; Returns the command to generate the compile_commands.json file
+(defun generate-files-command ()
+  (let* ((command-name (concat unreal-directory "Engine/Build/BatchFiles/Build.bat"))
+		 (project-root (projectile-project-root))
+		 (project-name (projectile-project-name))
+		 (project-file (concat project-root project-name ".uproject"))
+		 (target (concat project-name "Editor"))
+		 (platform "Win64"))
+	(concat command-name " " "-mode=GenerateClangDatabase" " " "-project=\"" project-file "\" " target " " "Development" " " platform)))
+
+;; Returns the command to copy the compile-commands.json file from the Unreal directory
+;; (defun copy-files-command ()
+;;   (let* ((command-name "copy")
+;; 		 (src-file (concat unreal-directory "compile_commands.json"))
+;; 		 (project-root (projectile-project-root))
+;; 		 (dst-file (concat "\"" project-root "compile_commands.json" "\"")))
+;; 	(concat command-name " " src-file " " dst-file)))
+
+;; The buffer where toprint the results of the following two commands
+(setq generate-files-buffer-output "*Output*")
+
+;; Generates the compile_commands.json file
+(defun generate-project-files ()
+  (start-process-shell-command "Generate" generate-files-buffer-output (generate-files-command)))
+
+;; Moves the compile_commands.json file
+(defun copy-project-files ()
+  (let* ((src-file (concat unreal-directory "compile_commands.json"))
+		 (project-root (projectile-project-root))
+		 (dst-file (concat project-root "compile_commands.json")))
+	(copy-file src-file dst-file t)))
+
+;; Generates and moves the compile_commands.json file
+(defun generate-and-copy-project-files ()
+  (interactive)
+  (let ((original-buffer (current-buffer)))
+	(switch-to-buffer-other-window generate-files-buffer-output)
+	(switch-to-buffer-other-window original-buffer))
+  (set-process-sentinel (generate-project-files) (lambda (_ _) (copy-project-files))))
+
+
 ;; Returns the command to perform a pseudo compilation (updates UHT info)
 (defun pseudo-compile-command ()
   (let* ((project-root (projectile-project-root))
@@ -411,7 +453,8 @@
 
   :bind (:map ue-mode-map
 			  ("C-c u c" . compile-unreal-project)
-			  ("C-c u r" . run-unreal-project)))
+			  ("C-c u r" . run-unreal-project)
+			  ("C-c u g" . generate-and-copy-project-files)))
 
 
 ;; ------ clang-format ------
@@ -456,11 +499,11 @@
 
 
 ;; ------ semantic refactor ------
-(use-package srefactor
-  :hook ((c++-mode . semantic-mode)
-		 (c-mode . semantic-mode))
-  :bind ((:map c++-mode-map ("M-RET" . srefactor-refactor-at-point))
-		 (:map c-mode-map ("M-RET" . srefactor-refactor-at-point))))
+;; (use-package srefactor
+;;   :hook ((c++-mode . semantic-mode)
+;; 		 (c-mode . semantic-mode))
+;;   :bind ((:map c++-mode-map ("M-RET" . srefactor-refactor-at-point))
+;; 		 (:map c-mode-map ("M-RET" . srefactor-refactor-at-point))))
 
 
 ;; ------ emacs-refactor ------
