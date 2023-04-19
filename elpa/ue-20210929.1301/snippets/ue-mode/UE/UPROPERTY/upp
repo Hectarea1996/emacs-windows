@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: Private property
-# key: upe
+# key: upp
 # condition: (ue--yas-can-expand-p)
 # --
 /**

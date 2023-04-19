@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: Callable function
-# key: ufp
+# key: ufc
 # condition: (ue--yas-can-expand-p)
 # --
 /**

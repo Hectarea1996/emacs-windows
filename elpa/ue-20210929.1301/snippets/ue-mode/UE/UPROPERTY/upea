@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: Private access property
-# key: upe
+# key: upea
 # condition: (ue--yas-can-expand-p)
 # --
 /**

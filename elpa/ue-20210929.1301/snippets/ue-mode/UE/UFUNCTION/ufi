@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: Implementable event
-# key: ufn
+# key: ufi
 # condition: (ue--yas-can-expand-p)
 # --
 /**

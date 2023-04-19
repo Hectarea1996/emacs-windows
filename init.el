@@ -34,7 +34,9 @@
   ;; (setq-default indent-tabs-mode nil)                            ; Prevents extraneous tabs
   (setq-default tab-width 4)                                   ; Tabs width being 4 spaces long
   (set-face-attribute 'default nil :height 100)                ; Make font scale a bit larger
-  )
+  (prefer-coding-system 'utf-8)                                ; Prevent the select enconding system window
+  (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+  (blink-cursor-mode 0))
 
 (initial-setup)
 
@@ -327,7 +329,8 @@
   :commands lsp
   :config
   (setq lsp-clangd-binary-path "c:/clangd/bin/clangd.exe")
-  (setq lsp-diagnostic-package :none))
+  (setq lsp-diagnostic-package :none)
+  (setq lsp-clients-clangd-args '("--header-insertion=never")))
 
 
 ;; ------ lsp-ui ------
@@ -351,15 +354,7 @@
 		 (project-file (concat project-root project-name ".uproject"))
 		 (target (concat project-name "Editor"))
 		 (platform "Win64"))
-	(concat command-name " " "-mode=GenerateClangDatabase" " " "-project=\"" project-file "\" " target " " "Development" " " platform)))
-
-;; Returns the command to copy the compile-commands.json file from the Unreal directory
-;; (defun copy-files-command ()
-;;   (let* ((command-name "copy")
-;; 		 (src-file (concat unreal-directory "compile_commands.json"))
-;; 		 (project-root (projectile-project-root))
-;; 		 (dst-file (concat "\"" project-root "compile_commands.json" "\"")))
-;; 	(concat command-name " " src-file " " dst-file)))
+	(concat command-name " " "-mode=GenerateClangDatabase" " " "-OutputDir=" "\"" project-root "\"" " " "-project=\"" project-file "\" " target " " "Development" " " platform)))
 
 ;; The buffer where toprint the results of the following two commands
 (setq generate-files-buffer-output "*Output*")
@@ -381,7 +376,9 @@
   (let ((original-buffer (current-buffer)))
 	(switch-to-buffer-other-window generate-files-buffer-output)
 	(switch-to-buffer-other-window original-buffer))
-  (set-process-sentinel (generate-project-files) (lambda (_ _) (copy-project-files))))
+  (generate-project-files)
+  ;; (set-process-sentinel (generate-project-files) (lambda (_ _) (copy-project-files)))
+  )
 
 
 ;; Returns the command to perform a pseudo compilation (updates UHT info)
@@ -410,16 +407,41 @@
 
 ;; Returns the command to compile a project
 (defun compile-unreal-project-command ()
+  ;; (let* ((project-root (projectile-project-root))
+  ;; 		 (project-name (projectile-project-name))
+  ;; 		 (cmd (concat unreal-directory "Engine/Build/BatchFiles/RunUAT.bat"))
+  ;; 		 (project-file (concat project-root project-name ".uproject")))
+  ;; 	(concat cmd " " "BuildEditor" " " "-project=\"" project-file "\""))
   (let* ((project-root (projectile-project-root))
 		 (project-name (projectile-project-name))
-		 (cmd (concat unreal-directory "Engine/Build/BatchFiles/RunUAT.bat"))
+		 (cmd (concat unreal-directory "Engine/Build/BatchFiles/Build.bat"))
+		 (project-file (concat project-root project-name ".uproject"))
+		 (target (concat project-name "Editor"))
+		 (platform "Win64")
 		 (project-file (concat project-root project-name ".uproject")))
-	(concat cmd " " "BuildEditor" " " "-project=\"" project-file "\"")))
+	(concat cmd " " "-Target=\"" target "\"" " " platform " " "Development" " " "-Project=\"" project-file "\"" " " "-WaitMutex" " " "-FromMsBuild")))
 
 ;; Compiles a project
 (defun compile-unreal-project ()
   (interactive)
-  (async-shell-command (print (compile-unreal-project-command) (get-buffer "*scratch*"))))
+  (async-shell-command (compile-unreal-project-command)))
+
+
+;; Returns the command to clean a project
+(defun clean-unreal-project-command ()
+  (let* ((project-root (projectile-project-root))
+		 (project-name (projectile-project-name))
+		 (cmd (concat unreal-directory "Engine/Build/BatchFiles/Clean.bat"))
+		 (project-file (concat project-root project-name ".uproject"))
+		 (target (concat project-name "Editor"))
+		 (platform "Win64")
+		 (project-file (concat project-root project-name ".uproject")))
+	(concat cmd " " "-Target=\"" target "\"" " " platform " " "Development" " " "-Project=\"" project-file "\"" " " "-WaitMutex" " " "-FromMsBuild")))
+
+;; Cleans a project
+(defun clean-unreal-project ()
+  (interactive)
+  (async-shell-command (print (clean-unreal-project-command) (get-buffer "*scratch*"))))
 
 
 ;; Return the command to run a project
@@ -464,13 +486,31 @@
 
 
 ;; ------ c-mode ------
+(defun my-c-mode-common-hook ()
+  ;; my customizations for all of c-mode, c++-mode, objc-mode, java-mode
+  (c-set-offset 'substatement-open 0)
+  ;; other customizations can go here
+
+  (setq c++-tab-always-indent t)
+  (setq c-basic-offset 4)                  ;; Default is 2
+  (setq c-indent-level 4)                  ;; Default is 2
+
+  (setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60))
+  (setq tab-width 4)
+  (setq indent-tabs-mode t)  ; use spaces only if nil
+  (setq c-syntactic-indentation nil)
+  )
+
 (use-package cc-mode
   :config
   (fset 'c-indent-region 'clang-format-region)
   :bind (:map c-mode-base-map
 			  ("C-<tab>" . clang-format-buffer)
 			  ("C-i" . tab-to-tab-stop)
-			  ("<backspace>" . backward-delete-char)))
+			  ("<backspace>" . backward-delete-char)
+			  ("RET" . newline))
+  :hook ((c-mode . my-c-mode-common-hook)
+		 (c++-mode . my-c-mode-common-hook)))
 
 
 ;; ------ flycheck ------

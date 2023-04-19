@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: Visible property
-# key: upe
+# key: upv
 # condition: (ue--yas-can-expand-p)
 # --
 /**

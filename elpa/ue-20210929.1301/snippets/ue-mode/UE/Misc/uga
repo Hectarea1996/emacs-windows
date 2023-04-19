@@ -1,0 +1,26 @@
+# -*- mode: snippet -*-
+# name: Generate accessors
+# key: uga
+# condition: (ue--yas-can-expand-p)
+# --
+/**
+ * @brief $1 getter
+ */
+UFUNCTION(BlueprintCallable, Category=`(file-name-base)`)
+${2:MyType} Get${1:MyProperty}() const;
+
+/**
+ * @brief $1 setter
+ */
+UFUNCTION(BlueprintCallable, Category=`(file-name-base)`)
+void Set$1($2$0 In$1);
+
+//$2 `(file-name-base)`::Get$1() const
+//{
+//    return $1;
+//}
+//
+//void `(file-name-base)`::Set$1($2 In$1)
+//{
+//    $1 = In$1;
+//}

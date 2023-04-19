@@ -3,4 +3,4 @@
 # key: uen
 # condition: (ue--yas-can-expand-p)
 # --
-${1:Entry}\tUMETA(DisplayName = \"$1\"),
+${1:Entry} UMETA(DisplayName = \"$1\"),

@@ -3,4 +3,4 @@
 # key: ucds
 # condition: (ue--yas-can-expand-p)
 # --
-CreateDefaultSubobject<${1:UStaticMeshComponent}>(TEXT("${2:Mesh}"));
+CreateDefaultSubobject<${1:UStaticMeshComponent}>(TEXT("${1:`(substring 1 yas-text)`}"));
