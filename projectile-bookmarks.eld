@@ -1,1 +1,1 @@
-("c:/Users/hecto/Documents/GitHub/UnrealEngine/" "c:/Users/hecto/Documents/Unreal Projects/ProceduralTest/" "~/.emacs.d/" "c:/Users/hecto/Documents/Unreal Projects/LevelUpProject/" "c:/Users/hecto/Documents/Unreal Projects/LevelUpCpp/" "c:/Users/hecto/Documents/GitHub/unreal-emacs/")
+("~/.emacs.d/" "c:/Users/hecto/Documents/Unreal Projects/ProceduralTest/" "c:/Users/hecto/Documents/GitHub/UnrealEngine/" "c:/Users/hecto/Documents/GitHub/unreal-emacs/")

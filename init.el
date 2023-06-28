@@ -8,7 +8,7 @@
  '(custom-safe-themes
    '("dde643b0efb339c0de5645a2bc2e8b4176976d5298065b8e6ca45bc4ddf188b7" "3199be8536de4a8300eaf9ce6d864a35aa802088c0925e944e2b74a574c68fd0" "a0415d8fc6aeec455376f0cbcc1bee5f8c408295d1c2b9a1336db6947b89dd98" default))
  '(package-selected-packages
-   '(emr srefactor company-lsp vscode-dark-plus-theme flycheck-clang-tidy yasnippet treemacs-projectile treemacs clang-format+ company ue lsp-ivy lsp-ui lsp-mode all-the-icons-ivy-rich dired-hide-dotfiles all-the-icons-dired all-the-icons exwm dirtrack ivy slime avy markdown-mode flycheck-pkg-config undo-tree ivy-xref dumb-jump flycheck modern-cpp-font-lock auto-complete pdf-continuous-scroll-mode pdf-tools paredit parinfer-rust multiple-cursors cmake-mode which-key use-package spacemacs-theme solo-jazz-theme solarized-theme rainbow-delimiters projectile parinfer-rust-mode one-themes modus-themes ivy-rich helpful doom-themes doom-modeline counsel))
+   '(rg emr srefactor company-lsp vscode-dark-plus-theme flycheck-clang-tidy yasnippet treemacs-projectile treemacs clang-format+ company ue lsp-ivy lsp-ui lsp-mode all-the-icons-ivy-rich dired-hide-dotfiles all-the-icons-dired all-the-icons exwm dirtrack ivy slime avy markdown-mode flycheck-pkg-config undo-tree ivy-xref dumb-jump flycheck modern-cpp-font-lock auto-complete pdf-continuous-scroll-mode pdf-tools paredit parinfer-rust multiple-cursors cmake-mode which-key use-package spacemacs-theme solo-jazz-theme solarized-theme rainbow-delimiters projectile parinfer-rust-mode one-themes modus-themes ivy-rich helpful doom-themes doom-modeline counsel))
  '(undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo-tree-history/"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -260,7 +260,9 @@
   (projectile-mode +1)
   :bind (:map projectile-mode-map
               ("s-p" . projectile-command-map)
-              ("C-c p" . projectile-command-map)))
+              ("C-c p" . projectile-command-map))
+  :config
+  (setq projectile-use-git-grep t))
 
 
 ;; ------- Multiple cursors -------
@@ -343,40 +345,44 @@
 
 ;; ------ ue ------
 ;; The Unreal Engine path
-(setq unreal-directory "C:/Users/hecto/Documents/GitHub/UnrealEngine/")  ; <- This must end with a slash
+(setq source-unreal-directory "C:/Users/hecto/Documents/GitHub/UnrealEngine/")  ; <- These must end with a slash
+(setq unreal-directory "C:/Program Files/Epic Games/UE_5.1/")
 
 
 ;; Returns the command to generate the compile_commands.json file
-(defun generate-files-command ()
-  (let* ((command-name (concat unreal-directory "Engine/Build/BatchFiles/Build.bat"))
+(defun generate-files-command (&optional enginep)
+  (let* ((command-name (concat source-unreal-directory "Engine/Build/BatchFiles/Build.bat"))
 		 (project-root (projectile-project-root))
 		 (project-name (projectile-project-name))
 		 (project-file (concat project-root project-name ".uproject"))
 		 (target (concat project-name "Editor"))
 		 (platform "Win64"))
-	(concat command-name " " "-mode=GenerateClangDatabase" " " "-OutputDir=" "\"" project-root "\"" " " "-project=\"" project-file "\" " target " " "Development" " " platform)))
+	(concat "\"" command-name "\"" " " "-mode=GenerateClangDatabase" (if enginep
+																		 ""
+																	   (concat " " "-OutputDir=" "\"" project-root "\"" ))
+			" " "-project=\"" project-file "\"" " " target " " "Development" " " platform)))
 
 ;; The buffer where toprint the results of the following two commands
 (setq generate-files-buffer-output "*Output*")
 
 ;; Generates the compile_commands.json file
-(defun generate-project-files ()
-  (start-process-shell-command "Generate" generate-files-buffer-output (generate-files-command)))
+;; (defun generate-project-files (&optional enginep)
+;;   (start-process-shell-command "Generate" generate-files-buffer-output (generate-files-command enginep)))
 
 ;; Moves the compile_commands.json file
-(defun copy-project-files ()
-  (let* ((src-file (concat unreal-directory "compile_commands.json"))
-		 (project-root (projectile-project-root))
-		 (dst-file (concat project-root "compile_commands.json")))
-	(copy-file src-file dst-file t)))
+;; (defun copy-project-files ()
+;;   (let* ((src-file (concat unreal-directory "compile_commands.json"))
+;; 		 (project-root (projectile-project-root))
+;; 		 (dst-file (concat project-root "compile_commands.json")))
+;; 	(copy-file src-file dst-file t)))
 
-;; Generates and moves the compile_commands.json file
-(defun generate-and-copy-project-files ()
+;; Generates the compile_commands.json file
+(defun generate-project-files (&optional enginep)
   (interactive)
   (let ((original-buffer (current-buffer)))
 	(switch-to-buffer-other-window generate-files-buffer-output)
 	(switch-to-buffer-other-window original-buffer))
-  (generate-project-files)
+  (start-process-shell-command "Generate" generate-files-buffer-output (generate-files-command enginep))
   ;; (set-process-sentinel (generate-project-files) (lambda (_ _) (copy-project-files)))
   )
 
@@ -419,7 +425,7 @@
 		 (target (concat project-name "Editor"))
 		 (platform "Win64")
 		 (project-file (concat project-root project-name ".uproject")))
-	(concat cmd " " "-Target=\"" target "\"" " " platform " " "Development" " " "-Project=\"" project-file "\"" " " "-WaitMutex" " " "-FromMsBuild")))
+	(concat "\"" cmd "\"" " " "-Target=\"" target "\"" " " platform " " "Development" " " "-Project=\"" project-file "\"" " " "-WaitMutex" " " "-FromMsBuild")))
 
 ;; Compiles a project
 (defun compile-unreal-project ()
@@ -476,7 +482,7 @@
   :bind (:map ue-mode-map
 			  ("C-c u c" . compile-unreal-project)
 			  ("C-c u r" . run-unreal-project)
-			  ("C-c u g" . generate-and-copy-project-files)))
+			  ("C-c u g" . generate-project-files)))
 
 
 ;; ------ clang-format ------
@@ -563,3 +569,51 @@
 
 (use-package treemacs-projectile
   :after (treemacs projectile))
+
+
+;; ------ code-slider ------
+(defvar *code-slider* nil)
+(defvar *observed-buffer* nil)
+(defvar *chars-per-second* 100)
+
+(defun ensure-code-slider ()
+  (setq *code-slider* (get-buffer-create "*code-slider*"))
+  (setq *observed-buffer* (get-buffer-create "*observed-buffer*")))
+
+(defun exists-code-slider-p ()
+  (and (buffer-live-p *code-slider*) (buffer-live-p *observed-buffer*)))
+
+(defun erase-slider-buffers ()
+  (when (exists-code-slider-p)
+	(with-current-buffer *code-slider*
+	  (erase-buffer))
+	(with-current-buffer *observed-buffer*
+	  (erase-buffer))))
+
+(defun initialize-code-slider (buffer)
+  (ensure-code-slider)
+  (erase-slider-buffers)
+  (with-current-buffer *observed-buffer*
+	(insert-buffer buffer)))
+
+(defun open-code-slider-buffer ()
+  (interactive)
+  (initialize-code-slider (current-buffer))
+  (switch-to-buffer-other-window *code-slider*))
+
+(defun code-slide-to-line (line)
+  (interactive "nWhat line?: ")
+  (when (and (exists-code-slider-p) (eq *code-slider* (current-buffer)))
+    (with-current-buffer *code-slider*
+	  (goto-char (point-max))
+	  (let ((total-lines (with-current-buffer *observed-buffer*
+						   (count-lines (point-min) (point-max)))))
+		(while (<= (line-number-at-pos) (min line total-lines))
+		  (let ((next-char-position (point-max)))
+			(insert-char (with-current-buffer *observed-buffer*
+						   (goto-char next-char-position)
+						   (following-char)))
+			(sit-for (/ 1.0 *chars-per-second*))))
+		(while (> (line-number-at-pos) (max line 0))
+		  (delete-backward-char 1)
+		  (sit-for (/ 1.0 *chars-per-second*)))))))

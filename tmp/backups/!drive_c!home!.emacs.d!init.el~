@@ -8,7 +8,7 @@
  '(custom-safe-themes
    '("dde643b0efb339c0de5645a2bc2e8b4176976d5298065b8e6ca45bc4ddf188b7" "3199be8536de4a8300eaf9ce6d864a35aa802088c0925e944e2b74a574c68fd0" "a0415d8fc6aeec455376f0cbcc1bee5f8c408295d1c2b9a1336db6947b89dd98" default))
  '(package-selected-packages
-   '(srefactor company-lsp vscode-dark-plus-theme flycheck-clang-tidy yasnippet treemacs-projectile treemacs clang-format+ company ue lsp-ivy lsp-ui lsp-mode all-the-icons-ivy-rich dired-hide-dotfiles all-the-icons-dired all-the-icons exwm dirtrack ivy slime avy markdown-mode flycheck-pkg-config undo-tree ivy-xref dumb-jump flycheck modern-cpp-font-lock auto-complete pdf-continuous-scroll-mode pdf-tools paredit parinfer-rust multiple-cursors cmake-mode which-key use-package spacemacs-theme solo-jazz-theme solarized-theme rainbow-delimiters projectile parinfer-rust-mode one-themes modus-themes ivy-rich helpful doom-themes doom-modeline counsel))
+   '(rg emr srefactor company-lsp vscode-dark-plus-theme flycheck-clang-tidy yasnippet treemacs-projectile treemacs clang-format+ company ue lsp-ivy lsp-ui lsp-mode all-the-icons-ivy-rich dired-hide-dotfiles all-the-icons-dired all-the-icons exwm dirtrack ivy slime avy markdown-mode flycheck-pkg-config undo-tree ivy-xref dumb-jump flycheck modern-cpp-font-lock auto-complete pdf-continuous-scroll-mode pdf-tools paredit parinfer-rust multiple-cursors cmake-mode which-key use-package spacemacs-theme solo-jazz-theme solarized-theme rainbow-delimiters projectile parinfer-rust-mode one-themes modus-themes ivy-rich helpful doom-themes doom-modeline counsel))
  '(undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo-tree-history/"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -34,7 +34,9 @@
   ;; (setq-default indent-tabs-mode nil)                            ; Prevents extraneous tabs
   (setq-default tab-width 4)                                   ; Tabs width being 4 spaces long
   (set-face-attribute 'default nil :height 100)                ; Make font scale a bit larger
-  )
+  (prefer-coding-system 'utf-8)                                ; Prevent the select enconding system window
+  (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+  (blink-cursor-mode 0))
 
 (initial-setup)
 
@@ -252,6 +254,10 @@
   ([remap describe-key] . helpful-key))
 
 
+;; ------ rg ------
+(use-package rg)
+
+
 ;; ------ projectile ------
 (use-package projectile
   :init
@@ -327,7 +333,8 @@
   :commands lsp
   :config
   (setq lsp-clangd-binary-path "c:/clangd/bin/clangd.exe")
-  (setq lsp-diagnostic-package :none))
+  (setq lsp-diagnostic-package :none)
+  (setq lsp-clients-clangd-args '("--header-insertion=never")))
 
 
 ;; ------ lsp-ui ------
@@ -341,6 +348,42 @@
 ;; ------ ue ------
 ;; The Unreal Engine path
 (setq unreal-directory "C:/Users/hecto/Documents/GitHub/UnrealEngine/")  ; <- This must end with a slash
+
+
+;; Returns the command to generate the compile_commands.json file
+(defun generate-files-command ()
+  (let* ((command-name (concat unreal-directory "Engine/Build/BatchFiles/Build.bat"))
+		 (project-root (projectile-project-root))
+		 (project-name (projectile-project-name))
+		 (project-file (concat project-root project-name ".uproject"))
+		 (target (concat project-name "Editor"))
+		 (platform "Win64"))
+	(concat command-name " " "-mode=GenerateClangDatabase" " " "-OutputDir=" "\"" project-root "\"" " " "-project=\"" project-file "\" " target " " "Development" " " platform)))
+
+;; The buffer where toprint the results of the following two commands
+(setq generate-files-buffer-output "*Output*")
+
+;; Generates the compile_commands.json file
+(defun generate-project-files ()
+  (start-process-shell-command "Generate" generate-files-buffer-output (generate-files-command)))
+
+;; Moves the compile_commands.json file
+(defun copy-project-files ()
+  (let* ((src-file (concat unreal-directory "compile_commands.json"))
+		 (project-root (projectile-project-root))
+		 (dst-file (concat project-root "compile_commands.json")))
+	(copy-file src-file dst-file t)))
+
+;; Generates and moves the compile_commands.json file
+(defun generate-and-copy-project-files ()
+  (interactive)
+  (let ((original-buffer (current-buffer)))
+	(switch-to-buffer-other-window generate-files-buffer-output)
+	(switch-to-buffer-other-window original-buffer))
+  (generate-project-files)
+  ;; (set-process-sentinel (generate-project-files) (lambda (_ _) (copy-project-files)))
+  )
+
 
 ;; Returns the command to perform a pseudo compilation (updates UHT info)
 (defun pseudo-compile-command ()
@@ -368,16 +411,41 @@
 
 ;; Returns the command to compile a project
 (defun compile-unreal-project-command ()
+  ;; (let* ((project-root (projectile-project-root))
+  ;; 		 (project-name (projectile-project-name))
+  ;; 		 (cmd (concat unreal-directory "Engine/Build/BatchFiles/RunUAT.bat"))
+  ;; 		 (project-file (concat project-root project-name ".uproject")))
+  ;; 	(concat cmd " " "BuildEditor" " " "-project=\"" project-file "\""))
   (let* ((project-root (projectile-project-root))
 		 (project-name (projectile-project-name))
-		 (cmd (concat unreal-directory "Engine/Build/BatchFiles/RunUAT.bat"))
+		 (cmd (concat unreal-directory "Engine/Build/BatchFiles/Build.bat"))
+		 (project-file (concat project-root project-name ".uproject"))
+		 (target (concat project-name "Editor"))
+		 (platform "Win64")
 		 (project-file (concat project-root project-name ".uproject")))
-	(concat cmd " " "BuildEditor" " " "-project=\"" project-file "\"")))
+	(concat cmd " " "-Target=\"" target "\"" " " platform " " "Development" " " "-Project=\"" project-file "\"" " " "-WaitMutex" " " "-FromMsBuild")))
 
 ;; Compiles a project
 (defun compile-unreal-project ()
   (interactive)
-  (async-shell-command (print (compile-unreal-project-command) (get-buffer "*scratch*"))))
+  (async-shell-command (compile-unreal-project-command)))
+
+
+;; Returns the command to clean a project
+(defun clean-unreal-project-command ()
+  (let* ((project-root (projectile-project-root))
+		 (project-name (projectile-project-name))
+		 (cmd (concat unreal-directory "Engine/Build/BatchFiles/Clean.bat"))
+		 (project-file (concat project-root project-name ".uproject"))
+		 (target (concat project-name "Editor"))
+		 (platform "Win64")
+		 (project-file (concat project-root project-name ".uproject")))
+	(concat cmd " " "-Target=\"" target "\"" " " platform " " "Development" " " "-Project=\"" project-file "\"" " " "-WaitMutex" " " "-FromMsBuild")))
+
+;; Cleans a project
+(defun clean-unreal-project ()
+  (interactive)
+  (async-shell-command (print (clean-unreal-project-command) (get-buffer "*scratch*"))))
 
 
 ;; Return the command to run a project
@@ -411,7 +479,8 @@
 
   :bind (:map ue-mode-map
 			  ("C-c u c" . compile-unreal-project)
-			  ("C-c u r" . run-unreal-project)))
+			  ("C-c u r" . run-unreal-project)
+			  ("C-c u g" . generate-and-copy-project-files)))
 
 
 ;; ------ clang-format ------
@@ -421,13 +490,31 @@
 
 
 ;; ------ c-mode ------
+(defun my-c-mode-common-hook ()
+  ;; my customizations for all of c-mode, c++-mode, objc-mode, java-mode
+  (c-set-offset 'substatement-open 0)
+  ;; other customizations can go here
+
+  (setq c++-tab-always-indent t)
+  (setq c-basic-offset 4)                  ;; Default is 2
+  (setq c-indent-level 4)                  ;; Default is 2
+
+  (setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60))
+  (setq tab-width 4)
+  (setq indent-tabs-mode t)  ; use spaces only if nil
+  (setq c-syntactic-indentation nil)
+  )
+
 (use-package cc-mode
   :config
   (fset 'c-indent-region 'clang-format-region)
   :bind (:map c-mode-base-map
 			  ("C-<tab>" . clang-format-buffer)
 			  ("C-i" . tab-to-tab-stop)
-			  ("<backspace>" . backward-delete-char)))
+			  ("<backspace>" . backward-delete-char)
+			  ("RET" . newline))
+  :hook ((c-mode . my-c-mode-common-hook)
+		 (c++-mode . my-c-mode-common-hook)))
 
 
 ;; ------ flycheck ------
@@ -464,16 +551,19 @@
 
 
 ;; ------ emacs-refactor ------
-(use-package emr
-  :config
-  (define-key prog-mode-map (kbd "M-RET") 'emr-show-refactor-menu))
+;; (use-package emr
+;;   :config
+;;   (define-key prog-mode-map (kbd "M-RET") 'emr-show-refactor-menu))
 
 
 ;; ------ treemacs ------
 (use-package treemacs
   :bind (("C-c t t" . treemacs))
   :config
-  (setq treemacs-width 50))
+  (setq treemacs-width 40)
+  (setq treemacs-position 'right)
+  (treemacs-resize-icons 16)
+  (setq treemacs-text-scale -1))
 
 (use-package treemacs-projectile
   :after (treemacs projectile))
