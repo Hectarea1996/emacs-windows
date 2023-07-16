@@ -1,1 +1,1 @@
-("~/.emacs.d/" "c:/Users/hecto/Documents/Unreal Projects/ProceduralTest/" "c:/Users/hecto/Documents/GitHub/UnrealEngine/" "c:/Users/hecto/Documents/GitHub/unreal-emacs/")
+("c:/Users/hecto/Documents/Unreal Projects/ProceduralTest/" "~/.emacs.d/" "c:/Users/hecto/Documents/GitHub/UnrealEngine/" "c:/Users/hecto/Downloads/SDL2-devel-2.28.1-mingw/SDL2-2.28.1/" "c:/Users/hecto/Documents/GitHub/unreal-emacs/")
