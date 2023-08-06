@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Declare delegate
+# key: udd
+# condition: (ue--yas-can-expand-p)
+# --
+DECLARE_DELEGATE($0DelegateName);

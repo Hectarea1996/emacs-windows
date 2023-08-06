@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: Declare dynamic multicast delegate
-# key: uddmd
-# condition: (ue--yas-can-expand-p)
-# --
-DECLARE_DYNAMIC_MULTICAST_DELEGATE($0DelegateName);

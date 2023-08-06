@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Native event
+# key: ufn
+# condition: (ue--yas-can-expand-p)
+# --
+UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="`(ue-class-name-at-point)`")
+$0

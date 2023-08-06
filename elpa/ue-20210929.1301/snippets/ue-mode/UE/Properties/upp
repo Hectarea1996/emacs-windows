@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Private property
+# key: upp
+# condition: (ue--yas-can-expand-p)
+# --
+UPROPERTY()
+$0

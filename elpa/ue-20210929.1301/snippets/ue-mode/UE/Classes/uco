@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: Object class declaration
+# key: uco
+# condition: (ue--yas-can-expand-p)
+# --
+UCLASS()
+class `(ue--api-macro-name)` UMyObject$0 : public UObject
+{
+	GENERATED_BODY()
+	
+};

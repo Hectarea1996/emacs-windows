@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: Component class declaration
+# key: ucc
+# condition: (ue--yas-can-expand-p)
+# --
+UCLASS(meta=(BlueprintSpawnableComponent))
+class `(ue--api-macro-name)` UMyComponent$0 : public UActorComponent
+{
+	GENERATED_BODY()
+	
+};

@@ -8,14 +8,36 @@
  '(custom-safe-themes
    '("dde643b0efb339c0de5645a2bc2e8b4176976d5298065b8e6ca45bc4ddf188b7" "3199be8536de4a8300eaf9ce6d864a35aa802088c0925e944e2b74a574c68fd0" "a0415d8fc6aeec455376f0cbcc1bee5f8c408295d1c2b9a1336db6947b89dd98" default))
  '(package-selected-packages
-   '(csharp-mode tree-sitter-indent tree-sitter-langs tree-sitter rg emr srefactor company-lsp vscode-dark-plus-theme flycheck-clang-tidy yasnippet treemacs-projectile treemacs clang-format+ company ue lsp-ivy lsp-ui lsp-mode all-the-icons-ivy-rich dired-hide-dotfiles all-the-icons-dired all-the-icons exwm dirtrack ivy slime avy markdown-mode flycheck-pkg-config undo-tree ivy-xref dumb-jump flycheck modern-cpp-font-lock auto-complete pdf-continuous-scroll-mode pdf-tools paredit parinfer-rust multiple-cursors cmake-mode which-key use-package spacemacs-theme solo-jazz-theme solarized-theme rainbow-delimiters projectile parinfer-rust-mode one-themes modus-themes ivy-rich helpful doom-themes doom-modeline counsel))
+   '(company-org-block toc-org visual-fill-column htmlize csharp-mode tree-sitter-indent tree-sitter-langs tree-sitter rg emr srefactor company-lsp vscode-dark-plus-theme flycheck-clang-tidy yasnippet treemacs-projectile treemacs clang-format+ company ue lsp-ivy lsp-ui lsp-mode all-the-icons-ivy-rich dired-hide-dotfiles all-the-icons-dired all-the-icons exwm dirtrack ivy slime avy markdown-mode flycheck-pkg-config undo-tree ivy-xref dumb-jump flycheck modern-cpp-font-lock auto-complete pdf-continuous-scroll-mode pdf-tools paredit parinfer-rust multiple-cursors cmake-mode which-key use-package spacemacs-theme solo-jazz-theme solarized-theme rainbow-delimiters projectile parinfer-rust-mode one-themes modus-themes ivy-rich helpful doom-themes doom-modeline counsel))
  '(undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo-tree-history/"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(fixed-pitch ((t (:family "Fira Code Retina" :height 120))))
+ '(org-block ((t (:inherit fixed-pitch))))
+ '(org-code ((t (:inherit (shadow fixed-pitch)))))
+ '(org-document-info ((t (:foreground "dark orange"))))
+ '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+ '(org-document-title ((t (:inherit default :weight bold :foreground "#d4d4d4" :font "Source Sans Pro" :height 2.5 :underline nil))))
+ '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+ '(org-level-1 ((t (:inherit default :weight bold :foreground "#d4d4d4" :font "Source Sans Pro" :height 2.0))))
+ '(org-level-2 ((t (:inherit default :weight bold :foreground "#d4d4d4" :font "Source Sans Pro" :height 1.5))))
+ '(org-level-3 ((t (:inherit default :weight bold :foreground "#d4d4d4" :font "Source Sans Pro" :height 1.3))))
+ '(org-level-4 ((t (:inherit default :weight bold :foreground "#d4d4d4" :font "Source Sans Pro" :height 1.1))))
+ '(org-level-5 ((t (:inherit default :weight bold :foreground "#d4d4d4" :font "Source Sans Pro"))))
+ '(org-level-6 ((t (:inherit default :weight bold :foreground "#d4d4d4" :font "Source Sans Pro"))))
+ '(org-level-7 ((t (:inherit default :weight bold :foreground "#d4d4d4" :font "Source Sans Pro"))))
+ '(org-level-8 ((t (:inherit default :weight bold :foreground "#d4d4d4" :font "Source Sans Pro"))))
+ '(org-link ((t (:foreground "royal blue" :underline t))))
+ '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-property-value ((t (:inherit fixed-pitch))) t)
+ '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
+ '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+ '(org-verbatim ((t (:inherit (shadow fixed-pitch)))))
+ '(variable-pitch ((t (:family "ETBembo" :height 150 :weight thin)))))
 
 
 ;; ------ Starting up emacs ------
@@ -112,6 +134,10 @@
 (require 'thingatpt)
 
 
+;; ------ f ------
+(use-package f)
+
+
 ;; ----- all-the-icons ------
 (use-package all-the-icons
   :if (display-graphic-p))
@@ -173,7 +199,7 @@
 (column-number-mode)
 (global-display-line-numbers-mode t)
 
-(dolist (mode '(eshell-mode-hook)) ; Indicate in which modes we don't want this mode
+(dolist (mode '(eshell-mode-hook org-mode-hook)) ; Indicate in which modes we don't want this mode
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 
@@ -265,6 +291,262 @@
   (setq projectile-use-git-grep t))
 
 
+;; ------- org-mode ------
+(require 'org)
+(setq org-hide-emphasis-markers t)
+(setq org-support-shift-select 'always)
+(setq org-startup-with-inline-images t)
+(setq org-image-actual-width nil)
+(setq org-src-window-setup 'other-window)
+
+(define-key org-mode-map (kbd "C-M-<up>") 'org-metaup)
+(define-key org-mode-map (kbd "M-<up>") 'custom-scroll-down)
+(define-key org-mode-map (kbd "C-M-<down>") 'org-metadown)
+(define-key org-mode-map (kbd "M-<down>") 'custom-scroll-up)
+
+(font-lock-add-keywords 'org-mode
+                        '(("^ *\\([-]\\) "
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))
+                          ("^\\*+ "
+                           (0
+                            (prog1 nil
+                              (put-text-property (match-beginning 0) (match-end 0)
+                                                 'invisible t))))))
+
+(let* ((variable-tuple
+        (cond ((x-list-fonts "ETBembo")         '(:font "ETBembo"))
+			  ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
+              ((x-list-fonts "M PLUS 1p")       '(:font "M PLUS 1p"))
+              ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
+              ((x-list-fonts "Verdana")         '(:font "Verdana"))
+              ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
+              (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
+       (base-font-color     (face-foreground 'default nil 'default))
+       (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
+
+  (custom-theme-set-faces
+   'user
+   `(org-level-8 ((t (,@headline ,@variable-tuple))))
+   `(org-level-7 ((t (,@headline ,@variable-tuple))))
+   `(org-level-6 ((t (,@headline ,@variable-tuple))))
+   `(org-level-5 ((t (,@headline ,@variable-tuple))))
+   `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
+   `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.3))))
+   `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.5))))
+   `(org-level-1 ((t (,@headline ,@variable-tuple :height 2.0))))
+   `(org-document-title ((t (,@headline ,@variable-tuple :height 2.5 :underline nil))))))
+
+(custom-theme-set-faces
+ 'user
+ '(variable-pitch ((t (:family "Theano Didot" :height 135 :weight thin))))
+ '(fixed-pitch ((t (:family "Fira Code Retina" :height 100)))))
+
+(add-hook 'org-mode-hook 'variable-pitch-mode)
+(add-hook 'org-mode-hook 'visual-line-mode)
+;;(add-hook 'org-mode-hook 'org-indent-mode)
+
+(custom-theme-set-faces
+ 'user
+ '(org-block ((t (:inherit fixed-pitch))))
+ '(org-code ((t (:inherit (shadow fixed-pitch)))))
+ '(org-document-info ((t (:foreground "dark orange"))))
+ '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+ '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+ '(org-link ((t (:foreground "royal blue" :underline t))))
+ '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-property-value ((t (:inherit fixed-pitch))) t)
+ '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
+ '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+ '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
+
+(defun org-insert-literal-character (c)
+  "Insert a literal character at point."
+  (interactive "cWhat character?")
+  (insert ?\u200B c ?\u200B))
+
+(defun org-insert-lisp-src-block-with-results ()
+  (interactive)
+  (let* ((languages (("lisp" . "lisp :exports both :eval never-export")
+					 ("C++" . "C++ :exports both :eval never-export :results output")))
+		 (lang-text (assoc (completing-read "Language: " languages nil t)
+						   languages)))
+	(insert "#+begin_src lisp :exports both :eval never-export
+")
+  (save-excursion
+    (insert "
+#+end_src"))))
+
+(defun org-insert-src-block ()
+  (interactive)
+  (let* ((languages '("lisp" "C++"))
+		 (lang (completing-read "Language: " languages nil t)))
+	(insert "#+begin_src " lang "
+")
+	(save-excursion
+      (insert "
+#+end_src"))))
+
+(define-key org-mode-map (kbd "C-c o c") 'org-insert-literal-character)
+(define-key org-mode-map (kbd "C-c o B") 'org-insert-lisp-src-block-with-results)
+(define-key org-mode-map (kbd "C-c o b") 'org-insert-src-block)
+
+
+;; ------ babel ------
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((C . t)))
+
+
+;; ------ htmlize ------
+(use-package htmlize)
+
+
+;; ------ ox-publish ------
+(require 'ox-publish)
+
+(defun org-publish-forced (project)
+  "Publish PROJECT but forced."
+  (interactive
+   (list (assoc (completing-read "Publish project: "
+				 org-publish-project-alist nil t)
+		org-publish-project-alist)))
+  (org-publish project t))
+
+(setq user-full-name "Héctor Galbis Sanchis")
+(setq user-mail-address "hectometrocuadrado@gmail.com")
+(setq org-export-default-language "es")
+(setq org-html-metadata-timestamp-format "%d-%m-%Y")
+(setq org-export-html-date-format-string "%d-%m-%Y")
+(setq org-html-link-up "https://hectarea1996.github.io/lispylambda/")
+(setq org-html-link-home "https://hectarea1996.github.io/lispylambda/")
+
+(setq org-publish-project-alist
+      (list
+       (list "main"
+             :base-directory "C:/Users/hecto/Documents/GitHub/lispylambda/"
+             :base-extension "org"
+             :publishing-directory "C:/Users/hecto/Documents/GitHub/lispylambda/docs/"
+             :publishing-function 'org-html-publish-to-html
+             :html-head "<link rel=\"stylesheet\" href=\"/lispylambda/css/gongzhitaao.css\" type=\"text/css\"/>"
+             :section-numbers nil
+             :with-toc nil
+             :html-postamble nil)
+
+       (list "common-lisp"
+             :recursive t
+             :base-directory "c:/Users/hecto/Documents/GitHub/lispylambda/posts/common-lisp/"
+             :base-extension "org"
+             :publishing-directory "C:/Users/hecto/Documents/GitHub/lispylambda/docs/posts/common-lisp/"
+             :publishing-function 'org-html-publish-to-html
+             :time-stamp-file t
+             :html-head "<link rel=\"stylesheet\" href=\"/lispylambda/css/gongzhitaao.css\" type=\"text/css\"/>"
+             :html-postamble (format "<p><a href=\"%s\">UP</a> | <a href=\"%s\">HOME</a></p><p></p><p>Autor: %s <%s></p><p>Última edición: %s</p>"
+                                     org-html-link-up
+                                     org-html-link-home
+                                     "%a" "%e" "%C")
+             :with-toc 2
+             :section-numbers nil
+             :auto-sitemap t
+             :sitemap-filename "common-lisp-sitemap.org"
+             :sitemap-title ""
+             :sitemap-sort-files 'chronologically
+             :sitemap-format-entry (lambda (file style project)
+                                     (format "(%s) [[file:%s][%s]]"
+                                             (org-format-time-string org-export-html-date-format-string
+                                                                     (org-publish-find-date file project))
+                                             file
+                                             (org-publish-find-title file project))))
+       
+       (list "UnrealEngine"
+             :recursive t
+             :base-directory "c:/Users/hecto/Documents/GitHub/lispylambda/posts/UnrealEngine/"
+             :base-extension "org"
+             :publishing-directory "C:/Users/hecto/Documents/GitHub/lispylambda/docs/posts/UnrealEngine/"
+             :publishing-function 'org-html-publish-to-html
+             :time-stamp-file t
+             :html-head "<link rel=\"stylesheet\" href=\"/lispylambda/css/gongzhitaao.css\" type=\"text/css\"/>"
+             :html-postamble (format "<p><a href=\"%s\">UP</a> | <a href=\"%s\">HOME</a></p><p></p><p>Autor: %s <%s></p><p>Última edición: %s</p>"
+                                     org-html-link-up
+                                     org-html-link-home
+                                     "%a" "%e" "%C")
+             :with-toc 2
+             :section-numbers nil
+             :auto-sitemap t
+             :sitemap-filename "UnrealEngine-sitemap.org"
+             :sitemap-title ""
+             :sitemap-sort-files 'chronologically
+             :sitemap-format-entry (lambda (file style project)
+                                     (format "(%s) [[file:%s][%s]]"
+                                             (org-format-time-string org-export-html-date-format-string
+                                                                     (org-publish-find-date file project))
+                                             file
+                                             (org-publish-find-title file project))))
+
+	   (list "C++"
+             :recursive t
+             :base-directory "c:/Users/hecto/Documents/GitHub/lispylambda/posts/C++/"
+             :base-extension "org"
+             :publishing-directory "C:/Users/hecto/Documents/GitHub/lispylambda/docs/posts/C++/"
+             :publishing-function 'org-html-publish-to-html
+             :time-stamp-file t
+             :html-head "<link rel=\"stylesheet\" href=\"/lispylambda/css/gongzhitaao.css\" type=\"text/css\"/>"
+             :html-postamble (format "<p><a href=\"%s\">UP</a> | <a href=\"%s\">HOME</a></p><p></p><p>Autor: %s <%s></p><p>Última edición: %s</p>"
+                                     org-html-link-up
+                                     org-html-link-home
+                                     "%a" "%e" "%C")
+             :with-toc 2
+             :section-numbers nil
+             :auto-sitemap t
+             :sitemap-filename "cpp-sitemap.org"
+             :sitemap-title ""
+             :sitemap-sort-files 'chronologically
+             :sitemap-format-entry (lambda (file style project)
+                                     (format "(%s) [[file:%s][%s]]"
+                                             (org-format-time-string org-export-html-date-format-string
+                                                                     (org-publish-find-date file project))
+                                             file
+                                             (org-publish-find-title file project))))
+
+       (list "images"
+             :base-directory "c:/Users/hecto/Documents/GitHub/lispylambda/images/"
+             :recursive t
+             :base-extension "png\\|gif\\|png"
+             :publishing-directory "C:/Users/hecto/Documents/GitHub/lispylambda/docs/images/"
+             :publishing-function 'org-publish-attachment)
+
+       (list "css"
+             :base-directory "C:/Users/hecto/Documents/GitHub/lispylambda/css/"
+             :base-extension "css\\|el"
+             :publishing-directory "C:/Users/hecto/Documents/GitHub/lispylambda/docs/css/"
+             :publishing-function 'org-publish-attachment)
+
+       (list "lispylambda"
+             :components '("css" "images" "common-lisp" "UnrealEngine" "C++" "main"))))
+
+(defun org-publish-update-lispylambda ()
+  "Update the posts of lispylambda site."
+  (interactive)
+  (org-publish-project "images")
+  (org-publish-project "css")
+  (org-publish-project "common-lisp")
+  (org-publish-project "UnrealEngine")
+  (org-publish-project "main" t))
+
+
+;; ------ visual-fill-column ------
+(use-package visual-fill-column
+  :config
+  (add-hook 'org-mode-hook 'visual-fill-column-mode)
+  (setq-default visual-fill-column-center-text t))
+
+
+;; ------ toc-org ------
+(use-package toc-org
+  :config
+  (add-hook 'org-mode-hook 'toc-org-mode))
+
+
 ;; ------- Multiple cursors -------
 (use-package multiple-cursors)
 (global-set-key (kbd "C-S-c") 'mc/edit-lines)
@@ -346,7 +628,7 @@
 ;; ------ ue ------
 ;; The Unreal Engine path
 (setq source-unreal-directory "C:/Users/hecto/Documents/GitHub/UnrealEngine/")  ; <- These must end with a slash
-(setq unreal-directory "C:/Program Files/Epic Games/UE_5.1/")
+(setq unreal-directory "C:/Program Files/Epic Games/UE_5.2/")
 
 
 ;; Returns the command to generate the compile_commands.json file
@@ -377,15 +659,23 @@
 ;; 	(copy-file src-file dst-file t)))
 
 ;; Generates the compile_commands.json file
-(defun generate-project-files (&optional enginep)
+(defun generate-project-files ()
   (interactive)
   (let ((original-buffer (current-buffer)))
 	(switch-to-buffer-other-window generate-files-buffer-output)
 	(switch-to-buffer-other-window original-buffer))
-  (start-process-shell-command "Generate" generate-files-buffer-output (generate-files-command enginep))
+  (start-process-shell-command "Generate" generate-files-buffer-output (generate-files-command nil))
   ;; (set-process-sentinel (generate-project-files) (lambda (_ _) (copy-project-files)))
   )
 
+(defun generate-engine-project-files ()
+  (interactive)
+  (let ((original-buffer (current-buffer)))
+	(switch-to-buffer-other-window generate-files-buffer-output)
+	(switch-to-buffer-other-window original-buffer))
+  (start-process-shell-command "Generate" generate-files-buffer-output (generate-files-command t))
+  ;; (set-process-sentinel (generate-project-files) (lambda (_ _) (copy-project-files)))
+  )
 
 ;; Returns the command to perform a pseudo compilation (updates UHT info)
 (defun pseudo-compile-command ()
@@ -861,7 +1151,9 @@
 ;; ------ company ------
 (use-package company
   :hook ((lsp . company)
-		 (emacs-lisp-mode . company-mode))
+		 (emacs-lisp-mode . company-mode)
+		 (c-mode . company-mode)
+		 (c++-mode . company-mode))
   :bind (:map company-active-map
               ("<tab>" . company-complete-selection))
   :config
@@ -870,6 +1162,16 @@
   (setq company-selection-wrap-around t)
   (setq company-minimum-prefix-length 2)
   (setq company-transformers '(company-sort-prefer-same-case-prefix)))
+
+
+;; ------ company-org ------
+(use-package company-org-block
+  :ensure t
+  :custom
+  (company-org-block-edit-style 'auto) ;; 'auto, 'prompt, or 'inline
+  :hook ((org-mode . (lambda ()
+                       (setq-local company-backends '(company-org-block))
+                       (company-mode +1)))))
 
 
 ;; ------ semantic refactor ------

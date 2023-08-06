@@ -3,4 +3,4 @@
 # key: uld
 # condition: (ue--yas-can-expand-p)
 # --
-DECLARE_LOG_CATEGORY_EXTERN(Log${1:Category}, All, All);
+DECLARE_LOG_CATEGORY_EXTERN(LogCategory$0, All, All);

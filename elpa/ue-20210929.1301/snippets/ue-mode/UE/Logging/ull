@@ -3,4 +3,4 @@
 # key: ull
 # condition: (ue--yas-can-expand-p)
 # --
-UE_LOG(Log${1:Category}, ${2:Warning}, TEXT("${3:Message}"));
+UE_LOG(LogCategory$0, Warning, TEXT("Message"));

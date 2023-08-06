@@ -3,4 +3,4 @@
 # key: uli
 # condition: (ue--yas-can-expand-p)
 # --
-DEFINE_LOG_CATEGORY(Log${1:Category});
+DEFINE_LOG_CATEGORY(LogCategory$0);

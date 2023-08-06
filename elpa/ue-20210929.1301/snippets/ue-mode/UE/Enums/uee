@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Enum declaration
+# key: uee
+# condition: (ue--yas-can-expand-p)
+# --
+UENUM(BlueprintType)
+enum class EMyEnum$0 : uint8
+{
+	None UMETA(hidden),
+};

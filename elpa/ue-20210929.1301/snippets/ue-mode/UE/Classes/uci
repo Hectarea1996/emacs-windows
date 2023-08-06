@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: Interface class declaration
+# key: uci
+# condition: (ue--yas-can-expand-p)
+# --
+UINTERFACE()
+class `(ue--api-macro-name)` UMyInterface$0 : public UInterface
+{
+	GENERATED_BODY()
+	
+};
+
+class `(ue--api-macro-name)` IMyInterface$0 : public IInterface
+{
+	GENERATED_BODY()
+	
+};

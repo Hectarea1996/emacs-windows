@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Implementable event
+# key: ufi
+# condition: (ue--yas-can-expand-p)
+# --
+UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category="`(ue-class-name-at-point)`")
+$0

@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: Module build file
+# key: umb
+# condition: (ue--yas-can-expand-p)
+# --
+using UnrealBuildTool;
+
+public class `(file-name-base)` : ModuleRules
+{
+	public `(file-name-base)`(ReadOnlyTargetRules Target) : base(Target)
+	{
+		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+		bEnforceIWYU = true;
+
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine" });
+		PrivateDependencyModuleNames.AddRange(new string[] { });
+	}
+}

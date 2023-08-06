@@ -1,1 +1,1 @@
-("c:/Users/hecto/Documents/Unreal Projects/ProceduralTest/" "~/.emacs.d/" "c:/Users/hecto/Documents/GitHub/UnrealEngine/" "c:/Users/hecto/Downloads/SDL2-devel-2.28.1-mingw/SDL2-2.28.1/" "c:/Users/hecto/Documents/GitHub/unreal-emacs/")
+("c:/Users/hecto/Documents/Unreal Projects/ProceduralTest/" "~/.emacs.d/" "c:/Users/hecto/Documents/GitHub/UnrealEngine/" "c:/Users/hecto/Documents/GitHub/lispylambda/" "c:/Program Files/Epic Games/UE_5.2/" "c:/Users/hecto/Documents/GitHub/unreal-emacs/")

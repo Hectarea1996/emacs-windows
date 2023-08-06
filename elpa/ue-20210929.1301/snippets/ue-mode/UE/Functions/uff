@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Private function
+# key: uff
+# condition: (ue--yas-can-expand-p)
+# --
+UFUNCTION()
+$0

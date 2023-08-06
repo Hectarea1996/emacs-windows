@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Editable property
+# key: upe
+# condition: (ue--yas-can-expand-p)
+# --
+UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="`(ue-class-name-at-point)`")
+$0

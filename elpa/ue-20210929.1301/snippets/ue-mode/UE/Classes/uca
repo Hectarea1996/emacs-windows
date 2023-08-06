@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: Actor class declaration
+# key: uca
+# condition: (ue--yas-can-expand-p)
+# --
+UCLASS()
+class `(ue--api-macro-name)` AMyActor$0 : public AActor
+{
+	GENERATED_BODY()
+	
+};

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Pure function
+# key: ufp
+# condition: (ue--yas-can-expand-p)
+# --
+UFUNCTION(BlueprintPure, Category="`(ue-class-name-at-point)`")
+$0

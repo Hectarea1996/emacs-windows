@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: Module target file
+# key: umt
+# condition: (ue--yas-can-expand-p)
+# --
+using UnrealBuildTool;
+
+public class `(file-name-base)` : TargetRules
+{
+	public `(file-name-base)`(ReadOnlyTargetRules Target) : base(Target)
+	{
+		Type = TargetType.Game;
+		DefaultBuildSettings = BuildSettings.V2;
+		ExtraModuleNames.AddRange( new string[] { "`(file-name-base)`" } );
+	}
+}

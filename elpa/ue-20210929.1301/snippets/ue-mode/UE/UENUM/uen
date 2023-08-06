@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: Enum name
-# key: uen
-# condition: (ue--yas-can-expand-p)
-# --
-${1:Entry} UMETA(DisplayName = \"$1\"),

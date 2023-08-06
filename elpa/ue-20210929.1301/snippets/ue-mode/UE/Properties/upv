@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Visible property
+# key: upv
+# condition: (ue--yas-can-expand-p)
+# --
+UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="`(ue-class-name-at-point)`")
+$0

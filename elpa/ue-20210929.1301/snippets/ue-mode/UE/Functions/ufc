@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Callable function
+# key: ufc
+# condition: (ue--yas-can-expand-p)
+# --
+UFUNCTION(BlueprintCallable, Category="`(ue-class-name-at-point)`")
+$0

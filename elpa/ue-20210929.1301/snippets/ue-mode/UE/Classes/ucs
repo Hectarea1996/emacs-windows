@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: Function library class declaration
+# key: ucs
+# condition: (ue--yas-can-expand-p)
+# --
+UCLASS()
+class `(ue--api-macro-name)` UMyFunctionLibrary$0 : public UBlueprintFunctionLibrary
+{
+	GENERATED_BODY()
+	
+};

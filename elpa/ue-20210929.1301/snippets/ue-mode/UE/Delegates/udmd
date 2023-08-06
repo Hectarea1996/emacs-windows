@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Declare multicast delegate
+# key: udmd
+# condition: (ue--yas-can-expand-p)
+# --
+DECLARE_MULTICAST_DELEGATE($0DelegateName);
